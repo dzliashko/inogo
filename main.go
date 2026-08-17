@@ -13,6 +13,6 @@ func countNonEmptyTitles(titles []string) int {
 }
 
 func main() {
-	headers := []string{"Go", "", "HTTP", ""}
-	fmt.Println(countNonEmptyTitles(headers))
+	titles := []string{"Go", "", "HTTP", ""}
+	fmt.Println(countNonEmptyTitles(titles))
 }

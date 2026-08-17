@@ -36,26 +36,25 @@ Study pace:
 
 ## Current phase
 
-`Phase 0 — Baseline assessment and Go environment`
+`Phase 1 — Go foundations`
 
 ## Current topic
 
-`Go toolchain and program structure`
+`Program structure: module, package, imports, functions, and main`
 
 ## Current exercise
 
-`Exercise 001 — Toolchain workflow and reading compiler errors`
+`Exercise 002 — Read and explain the current Go program`
 
 ## Current project milestone
 
-`M0 — Repository and learning baseline`
+`M1 — Go fundamentals`
 
 ## Recommended next action
 
-1. Complete the Go toolchain workflow with the existing minimal program.
-2. Learn the roles of module, package, import, function, and `main`.
-3. Deliberately produce and interpret a compiler error.
-4. Then continue Phase 1 with variables, conditions, loops, and functions at beginner depth.
+1. Explain the structure and execution flow of the current Go program.
+2. Distinguish module, package, imported package, and function.
+3. Continue with variables, basic types, conditions, loops, and functions at beginner depth.
 
 ---
 
@@ -114,20 +113,42 @@ Do not mark a technology as learned merely because it is listed here.
 
 # Completed topics
 
-None yet.
+- Initial programming baseline assessment.
+- Go environment and introductory toolchain workflow.
 
 ---
 
 # Topics in progress
 
-- Go environment and toolchain.
 - Go program structure.
 
 ---
 
 # Exercises
 
-No exercises completed yet.
+## Exercise 001 — Toolchain workflow and reading compiler errors
+
+**Phase:** Phase 0 — Baseline and development environment
+
+**Topic:** Go toolchain and compiler diagnostics
+
+**Project relevance:** Establishes the build, run, formatting, and diagnostic workflow used throughout the backend project.
+
+**Result:** Completed with small conceptual correction
+
+**Tests:** Passed (`go test ./...` and `go vet ./...`; no test files exist yet)
+
+**What I understood:** Can format, run, and build a Go package and use compiler locations and messages to find a naming error.
+
+**Problems encountered:** Initially described `go run .` as running one file and attributed the temporary binary to `go build`; corrected to package-level behavior and explicit build output.
+
+**Hints required:** Small
+
+**Important mistake:** Imprecise distinction between the temporary executable used by `go run` and the explicit output written by `go build -o`.
+
+**Needs repetition:** No immediate repetition; reinforce during later exercises.
+
+**Next useful variation:** Build and run a multi-file `main` package when program structure is introduced.
 
 For completed exercises, use this format:
 
@@ -172,7 +193,7 @@ A different exercise that would test the same concept if repetition is needed.
 
 ## M0 — Learning and repository baseline
 
-**Status:** `In progress`
+**Status:** `Completed`
 
 Goal:
 
@@ -641,4 +662,4 @@ Record only observations that should change future teaching.
 
 # Next milestone
 
-Complete **M0 — Learning and repository baseline**, then begin **Phase 1 — Go foundations** at the level justified by the assessment.
+Complete **M1 — Go fundamentals** at beginner depth, starting with program structure.
