@@ -141,7 +141,7 @@ Use a short combination of questions and small exercises.
 
 Status:
 
-`Not started`
+`Completed`
 
 ---
 
@@ -170,7 +170,7 @@ Practice:
 
 Status:
 
-`Not started`
+`Completed`
 
 ---
 
@@ -194,7 +194,7 @@ Practice:
 
 Status:
 
-`Not started`
+`Completed`
 
 ---
 

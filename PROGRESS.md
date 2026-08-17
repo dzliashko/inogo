@@ -40,11 +40,11 @@ Study pace:
 
 ## Current topic
 
-`Program structure: module, package, imports, functions, and main`
+`Variables, constants, and basic types`
 
 ## Current exercise
 
-`Exercise 002 — Read and explain the current Go program`
+`Exercise 003 — Values and zero values`
 
 ## Current project milestone
 
@@ -52,9 +52,9 @@ Study pace:
 
 ## Recommended next action
 
-1. Explain the structure and execution flow of the current Go program.
-2. Distinguish module, package, imported package, and function.
-3. Continue with variables, basic types, conditions, loops, and functions at beginner depth.
+1. Learn declarations, assignment, short declarations, and zero values.
+2. Practice basic `string`, `int`, and `bool` values in a small program.
+3. Continue with conditions after demonstrating the concepts independently.
 
 ---
 
@@ -115,12 +115,13 @@ Do not mark a technology as learned merely because it is listed here.
 
 - Initial programming baseline assessment.
 - Go environment and introductory toolchain workflow.
+- Go program structure: module, package, imports, functions, and `main`.
 
 ---
 
 # Topics in progress
 
-- Go program structure.
+- Variables, constants, and basic types.
 
 ---
 
@@ -149,6 +150,30 @@ Do not mark a technology as learned merely because it is listed here.
 **Needs repetition:** No immediate repetition; reinforce during later exercises.
 
 **Next useful variation:** Build and run a multi-file `main` package when program structure is introduced.
+
+## Exercise 002 — Read and explain the current Go program
+
+**Phase:** Phase 1 — Go foundations
+
+**Topic:** Program structure and execution flow
+
+**Project relevance:** Establishes the meaning of module, package, imports, functions, and the executable entry point before the backend grows into multiple files and packages.
+
+**Result:** Completed with a small terminology correction
+
+**Tests:** Not applicable (code-reading exercise)
+
+**What I understood:** Identified the module path, package, imported package and function, program entry point, and correctly traced a loop with a boolean condition and counter.
+
+**Problems encountered:** Described `main` generally as the starting point without distinguishing `package main` from `func main()`.
+
+**Hints required:** None during the exercise
+
+**Important mistake:** `package main` marks an executable package; `func main()` is its entry point.
+
+**Needs repetition:** No immediate repetition; reinforce when the first additional package is created.
+
+**Next useful variation:** Explain execution and dependency flow after the program is split across multiple files or packages.
 
 For completed exercises, use this format:
 
@@ -406,13 +431,14 @@ None recorded yet.
 - Can write a small Go function using a slice, `range`, a condition, a counter, and a return value.
 - Comfortable with basic terminal navigation commands.
 - Understands the basic HTTP request/response distinction and common `GET`, `POST`, `404`, and `500` meanings.
+- Can trace a loop and boolean condition accurately by hand.
+- Understands the basic roles of module, package, import, and `func main()`.
 
 ---
 
 # Concepts needing practice
 
 - Precise terminology for functions and ordered collections.
-- Tracing code execution and boolean negation.
 - Systematic debugging based on observable evidence.
 - Git staging area versus commit history.
 - SQL fundamentals (not studied yet).
