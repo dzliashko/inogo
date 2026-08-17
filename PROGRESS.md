@@ -44,7 +44,7 @@ Study pace:
 
 ## Current exercise
 
-`Exercise 006 — Boolean expressions for feed and article state`
+`Exercise 007 — Classify feed status with switch`
 
 ## Current project milestone
 
@@ -52,9 +52,9 @@ Study pace:
 
 ## Recommended next action
 
-1. Practice `&&`, `||`, and `!` using backend-related boolean rules.
-2. Explain short-circuit evaluation using concrete inputs.
-3. Introduce `switch` after compound boolean expressions are demonstrated.
+1. Learn expression-based `switch` and its first-matching-case behavior.
+2. Compare `switch` with an equivalent `if` chain.
+3. Complete the conditions and control-flow topic after demonstrating both forms.
 
 ---
 
@@ -247,6 +247,30 @@ Do not mark a technology as learned merely because it is listed here.
 **Needs repetition:** No immediate repetition; reinforce early returns in future validation functions.
 
 **Next useful variation:** Combine early returns with compound boolean expressions in feed validation.
+
+## Exercise 006 — Boolean expressions for feed and article state
+
+**Phase:** Phase 1 — Go foundations
+
+**Topic:** Compound boolean expressions and short-circuit evaluation
+
+**Project relevance:** Feed refresh eligibility and article visibility depend on combining several boolean states correctly.
+
+**Result:** Completed with one correction
+
+**Tests:** Passed (`gofmt`, `go test ./...`, and `go vet ./...`; no test files exist yet)
+
+**What I understood:** Used `&&`, `||`, and `!`, verified boolean combinations, and explained left-to-right short-circuit behavior for an `&&` chain.
+
+**Problems encountered:** Initially used `isRead || isStarred`, which treated a read article as satisfying the unread rule and rejected an unread unstarred article.
+
+**Hints required:** Small conceptual hint
+
+**Important mistake:** A positive boolean name was used directly where the requirement needed its negation.
+
+**Needs repetition:** Yes, through boolean rules in a different domain context.
+
+**Next useful variation:** Write truth tables before implementing compound authorization or filtering rules.
 
 For completed exercises, use this format:
 
@@ -509,6 +533,7 @@ None recorded yet.
 - Understands `var`, assignment, `:=`, `const`, and zero values for `string`, `int`, and `bool`.
 - Can implement mutually exclusive conditional branches and verify boundary values.
 - Understands that an unconditional `return` ends the current function call and makes a following `else` unnecessary.
+- Can combine boolean conditions with `&&`, `||`, and `!` and explain basic short-circuit evaluation.
 
 ---
 

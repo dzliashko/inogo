@@ -25,11 +25,26 @@ func classifyUnreadCount(count int) string {
 	return "many"
 }
 
-func main() {
-	fmt.Println(classifyUnreadCount(-1))
-	fmt.Println(classifyUnreadCount(0))
-	fmt.Println(classifyUnreadCount(1))
-	fmt.Println(classifyUnreadCount(9))
-	fmt.Println(classifyUnreadCount(10))
+func canRefreshFeed(enabled bool, failures int) bool {
+	if enabled && failures >= 0 && failures <= 2 {
+		return true
+	}
+	return false
+}
 
+func shouldShowArticle(isRead bool, isStarred bool) bool {
+	return !isRead || isStarred
+}
+
+func main() {
+	fmt.Println(canRefreshFeed(true, 0))
+	fmt.Println(canRefreshFeed(true, 2))
+	fmt.Println(canRefreshFeed(true, 3))
+	fmt.Println(canRefreshFeed(false, 0))
+	fmt.Println(canRefreshFeed(true, -1))
+
+	fmt.Println(shouldShowArticle(true, true))
+	fmt.Println(shouldShowArticle(true, false))
+	fmt.Println(shouldShowArticle(false, true))
+	fmt.Println(shouldShowArticle(false, false))
 }
