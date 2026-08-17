@@ -49,9 +49,28 @@ func feedStatus(status string) string {
 	}
 }
 
+func countProcessableArticles(total int) int {
+	count := 0
+	if total <= 0 {
+		return 0
+	}
+	for i := 1; i <= total; i++ {
+		if i > 10 {
+			break
+		}
+		if i%3 == 0 {
+			continue
+		}
+		count++
+	}
+	return count
+}
+
 func main() {
-	fmt.Println(feedStatus("active"))
-	fmt.Println(feedStatus("paused"))
-	fmt.Println(feedStatus("failed"))
-	fmt.Println(feedStatus("new"))
+	fmt.Println(countProcessableArticles(-1))
+	fmt.Println(countProcessableArticles(0))
+	fmt.Println(countProcessableArticles(1))
+	fmt.Println(countProcessableArticles(3))
+	fmt.Println(countProcessableArticles(10))
+	fmt.Println(countProcessableArticles(20))
 }

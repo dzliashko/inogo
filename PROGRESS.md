@@ -44,7 +44,7 @@ Study pace:
 
 ## Current exercise
 
-`Exercise 008 — Process article counts with for`
+`Exercise 009 — Retry loop with condition-style for`
 
 ## Current project milestone
 
@@ -52,9 +52,9 @@ Study pace:
 
 ## Recommended next action
 
-1. Learn Go's `for` forms and choose one appropriate to a concrete task.
-2. Practice counters, totals, `break`, and `continue`.
-3. Explain loop termination and relevant boundary cases.
+1. Practice a condition-style `for` whose progress is updated inside the loop body.
+2. Explain loop termination and avoid an infinite loop.
+3. Compare condition-style and three-clause `for`, then complete the loops topic.
 
 ---
 
@@ -296,6 +296,30 @@ Do not mark a technology as learned merely because it is listed here.
 **Needs repetition:** Yes, when `switch` branches perform work without returning.
 
 **Next useful variation:** Use a `switch` whose cases update a value and then continue with code after the switch.
+
+## Exercise 008 — Process article counts with for
+
+**Phase:** Phase 1 — Go foundations
+
+**Topic:** Three-clause `for`, `break`, and `continue`
+
+**Project relevance:** Backend batch processing often limits the amount of work, skips invalid items, and tracks successfully processed items.
+
+**Result:** Completed with corrections
+
+**Tests:** Passed (`gofmt`, `go test ./...`, and `go vet ./...`; no test files exist yet)
+
+**What I understood:** Used a three-clause `for`, bounded work with `break`, skipped invalid items with `continue`, and returned a counter representing processed items.
+
+**Problems encountered:** Initially stopped before processing item 10 and returned `total - count`, which mixed examined and unexamined items. Initial predictions matched the faulty implementation rather than the requirements.
+
+**Hints required:** Significant
+
+**Important mistake:** Did not first define precisely what the counter represented and used the input total in a result after the loop intentionally stopped early.
+
+**Needs repetition:** Yes, through another bounded-processing exercise with different boundary rules.
+
+**Next useful variation:** Trace the counter and termination condition before running a condition-style retry loop.
 
 For completed exercises, use this format:
 
@@ -560,6 +584,7 @@ None recorded yet.
 - Understands that an unconditional `return` ends the current function call and makes a following `else` unnecessary.
 - Can combine boolean conditions with `&&`, `||`, and `!` and explain basic short-circuit evaluation.
 - Can implement a value-based `switch` with `default`.
+- Can use a three-clause `for` with `break` and `continue` after correcting boundary and counter-semantics mistakes.
 
 ---
 
