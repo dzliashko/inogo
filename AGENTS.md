@@ -717,6 +717,20 @@ Expected habits later in the course:
 
 Do not require complex Git workflows in early exercises.
 
+### Commit and push completed exercises
+
+After every completed exercise:
+
+1. inspect `git status` and the relevant diffs;
+2. update the learning records when the exercise represents meaningful progress;
+3. stage only the files that belong to the completed exercise and its learning records;
+4. create one focused commit with a useful message;
+5. push that commit to the configured GitHub remote.
+
+Do not include unrelated user changes, local configuration, generated artifacts, or secrets in the exercise commit.
+
+If a commit or push cannot be completed safely, explain the blocker instead of broadening the commit scope or rewriting Git history.
+
 ---
 
 ## Progress tracking
