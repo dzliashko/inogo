@@ -1,0 +1,57 @@
+[
+  {
+    "label": "Go: Test All",
+    "command": "go",
+    "args": [
+      "test",
+      "./..."
+    ],
+    "cwd": "$ZED_WORKTREE_ROOT"
+  },
+  {
+    "label": "Go: Test Race",
+    "command": "go",
+    "args": [
+      "test",
+      "-race",
+      "./..."
+    ],
+    "cwd": "$ZED_WORKTREE_ROOT"
+  },
+  {
+    "label": "Go: Vet",
+    "command": "go",
+    "args": [
+      "vet",
+      "./..."
+    ],
+    "cwd": "$ZED_WORKTREE_ROOT"
+  },
+  {
+    "label": "Go: Format",
+    "command": "go",
+    "args": [
+      "fmt",
+      "./..."
+    ],
+    "cwd": "$ZED_WORKTREE_ROOT"
+  },
+  {
+    "label": "Go: Build All",
+    "command": "go",
+    "args": [
+      "build",
+      "./..."
+    ],
+    "cwd": "$ZED_WORKTREE_ROOT"
+  },
+  {
+    "label": "Go: Mod Tidy",
+    "command": "go",
+    "args": [
+      "mod",
+      "tidy"
+    ],
+    "cwd": "$ZED_WORKTREE_ROOT"
+  }
+]
