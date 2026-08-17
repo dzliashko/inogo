@@ -221,7 +221,7 @@ Practice:
 
 Status:
 
-`Not started`
+`Completed`
 
 ---
 

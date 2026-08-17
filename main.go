@@ -13,6 +13,17 @@ func countNonEmptyTitles(titles []string) int {
 }
 
 func main() {
-	titles := []string{"Go", "", "HTTP", ""}
-	fmt.Println(countNonEmptyTitles(titles))
+	var feed string
+	var articles int
+	var isUpdated bool
+
+	fmt.Printf("Feed = %s, Articles = %d, Updated = %t\n", feed, articles, isUpdated)
+	feed = "Go Blog"
+	articles = 12
+	isUpdated = true
+
+	url := "https://ru.hexlet.io/blog.rss"
+	const maxArticles = 1000
+	fmt.Printf("Feed = %s, Articles = %d, Updated = %t, URL = %s, MaxArticles = %d\n", feed, articles, isUpdated, url, maxArticles)
+
 }

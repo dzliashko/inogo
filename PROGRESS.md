@@ -40,11 +40,11 @@ Study pace:
 
 ## Current topic
 
-`Variables, constants, and basic types`
+`Conditions and control flow`
 
 ## Current exercise
 
-`Exercise 003 — Values and zero values`
+`Exercise 004 — Classify a feed by unread count`
 
 ## Current project milestone
 
@@ -52,9 +52,9 @@ Study pace:
 
 ## Recommended next action
 
-1. Learn declarations, assignment, short declarations, and zero values.
-2. Practice basic `string`, `int`, and `bool` values in a small program.
-3. Continue with conditions after demonstrating the concepts independently.
+1. Learn comparisons, boolean expressions, `if`, `else if`, and `else`.
+2. Practice mutually exclusive branches and boundary values.
+3. Introduce early returns after basic branching is demonstrated.
 
 ---
 
@@ -116,12 +116,13 @@ Do not mark a technology as learned merely because it is listed here.
 - Initial programming baseline assessment.
 - Go environment and introductory toolchain workflow.
 - Go program structure: module, package, imports, functions, and `main`.
+- Variables, constants, basic types, zero values, and assignment forms.
 
 ---
 
 # Topics in progress
 
-- Variables, constants, and basic types.
+- Conditions and control flow.
 
 ---
 
@@ -174,6 +175,30 @@ Do not mark a technology as learned merely because it is listed here.
 **Needs repetition:** No immediate repetition; reinforce when the first additional package is created.
 
 **Next useful variation:** Explain execution and dependency flow after the program is split across multiple files or packages.
+
+## Exercise 003 — Values and zero values
+
+**Phase:** Phase 1 — Go foundations
+
+**Topic:** Variables, constants, basic types, and zero values
+
+**Project relevance:** Feed metadata, article counters, URLs, and boolean state all require clearly typed values and predictable defaults.
+
+**Result:** Completed
+
+**Tests:** Passed (`gofmt`, `go test ./...`, and `go vet ./...`; no test files exist yet)
+
+**What I understood:** Correctly used `var`, assignment, `:=`, `const`, `string`, `int`, and `bool`; explained zero values and the same-scope restriction on `:=`.
+
+**Problems encountered:** One spelling error in a variable name and initially imprecise domain names; the spelling error was corrected independently.
+
+**Hints required:** Small naming feedback
+
+**Important mistake:** None affecting behavior.
+
+**Needs repetition:** No immediate repetition; reinforce type choice and naming in later domain exercises.
+
+**Next useful variation:** Use typed values in branching logic for feed and article state.
 
 For completed exercises, use this format:
 
@@ -433,6 +458,7 @@ None recorded yet.
 - Understands the basic HTTP request/response distinction and common `GET`, `POST`, `404`, and `500` meanings.
 - Can trace a loop and boolean condition accurately by hand.
 - Understands the basic roles of module, package, import, and `func main()`.
+- Understands `var`, assignment, `:=`, `const`, and zero values for `string`, `int`, and `bool`.
 
 ---
 
