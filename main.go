@@ -12,18 +12,23 @@ func countNonEmptyTitles(titles []string) int {
 	return total
 }
 
+func classifyUnreadCount(count int) string {
+	if count < 0 {
+		return "invalid"
+	} else if count == 0 {
+		return "empty"
+	} else if count <= 9 {
+		return "few"
+	} else {
+		return "many"
+	}
+}
+
 func main() {
-	var feed string
-	var articles int
-	var isUpdated bool
-
-	fmt.Printf("Feed = %s, Articles = %d, Updated = %t\n", feed, articles, isUpdated)
-	feed = "Go Blog"
-	articles = 12
-	isUpdated = true
-
-	url := "https://ru.hexlet.io/blog.rss"
-	const maxArticles = 1000
-	fmt.Printf("Feed = %s, Articles = %d, Updated = %t, URL = %s, MaxArticles = %d\n", feed, articles, isUpdated, url, maxArticles)
+	fmt.Println(classifyUnreadCount(-1))
+	fmt.Println(classifyUnreadCount(0))
+	fmt.Println(classifyUnreadCount(1))
+	fmt.Println(classifyUnreadCount(9))
+	fmt.Println(classifyUnreadCount(10))
 
 }

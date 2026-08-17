@@ -44,7 +44,7 @@ Study pace:
 
 ## Current exercise
 
-`Exercise 004 — Classify a feed by unread count`
+`Exercise 005 — Refactor branching with early returns`
 
 ## Current project milestone
 
@@ -52,9 +52,9 @@ Study pace:
 
 ## Recommended next action
 
-1. Learn comparisons, boolean expressions, `if`, `else if`, and `else`.
-2. Practice mutually exclusive branches and boundary values.
-3. Introduce early returns after basic branching is demonstrated.
+1. Refactor a correct `if` / `else if` / `else` chain using early returns.
+2. Explain why removing `else` does not change behavior after an unconditional `return`.
+3. Practice compound boolean expressions and then introduce `switch`.
 
 ---
 
@@ -199,6 +199,30 @@ Do not mark a technology as learned merely because it is listed here.
 **Needs repetition:** No immediate repetition; reinforce type choice and naming in later domain exercises.
 
 **Next useful variation:** Use typed values in branching logic for feed and article state.
+
+## Exercise 004 — Classify a feed by unread count
+
+**Phase:** Phase 1 — Go foundations
+
+**Topic:** Conditions and control flow
+
+**Project relevance:** Backend code frequently classifies input and state using explicit, mutually exclusive rules and must handle boundary values correctly.
+
+**Result:** Completed
+
+**Tests:** Passed (`gofmt`, `go test ./...`, and `go vet ./...`; no test files exist yet)
+
+**What I understood:** Correctly implemented an `if` / `else if` / `else` chain and handled the boundaries `-1`, `0`, `1`, `9`, and `10`.
+
+**Problems encountered:** None affecting correctness; the next refinement is removing unnecessary `else` blocks after unconditional returns.
+
+**Hints required:** None
+
+**Important mistake:** None.
+
+**Needs repetition:** No immediate repetition; reinforce boundary analysis in later validation exercises.
+
+**Next useful variation:** Express the same behavior using early returns and explain why the branches remain mutually exclusive.
 
 For completed exercises, use this format:
 
@@ -459,6 +483,7 @@ None recorded yet.
 - Can trace a loop and boolean condition accurately by hand.
 - Understands the basic roles of module, package, import, and `func main()`.
 - Understands `var`, assignment, `:=`, `const`, and zero values for `string`, `int`, and `bool`.
+- Can implement mutually exclusive conditional branches and verify boundary values.
 
 ---
 
