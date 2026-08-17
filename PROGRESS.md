@@ -20,7 +20,7 @@ Main learning project:
 
 Starting level:
 
-`Not assessed yet`
+`Beginner — familiar with basic Go syntax; broader backend fundamentals are not yet established`
 
 Study start:
 
@@ -40,11 +40,11 @@ Study pace:
 
 ## Current topic
 
-`Initial assessment / Go toolchain and first program`
+`Go toolchain and program structure`
 
 ## Current exercise
 
-`None assigned yet`
+`Exercise 001 — Toolchain workflow and reading compiler errors`
 
 ## Current project milestone
 
@@ -52,10 +52,10 @@ Study pace:
 
 ## Recommended next action
 
-1. Assess current programming fundamentals.
-2. Verify the Go development environment.
-3. Confirm that a minimal Go program can be created, formatted, built, run, and tested.
-4. Start Phase 1 at the appropriate depth based on the assessment.
+1. Complete the Go toolchain workflow with the existing minimal program.
+2. Learn the roles of module, package, import, function, and `main`.
+3. Deliberately produce and interpret a compiler error.
+4. Then continue Phase 1 with variables, conditions, loops, and functions at beginner depth.
 
 ---
 
@@ -120,7 +120,8 @@ None yet.
 
 # Topics in progress
 
-None yet.
+- Go environment and toolchain.
+- Go program structure.
 
 ---
 
@@ -171,7 +172,7 @@ A different exercise that would test the same concept if repetition is needed.
 
 ## M0 — Learning and repository baseline
 
-**Status:** `Not started`
+**Status:** `In progress`
 
 Goal:
 
@@ -381,13 +382,19 @@ None recorded yet.
 
 # Concepts understood well
 
-None recorded yet.
+- Can write a small Go function using a slice, `range`, a condition, a counter, and a return value.
+- Comfortable with basic terminal navigation commands.
+- Understands the basic HTTP request/response distinction and common `GET`, `POST`, `404`, and `500` meanings.
 
 ---
 
 # Concepts needing practice
 
-None recorded yet.
+- Precise terminology for functions and ordered collections.
+- Tracing code execution and boolean negation.
+- Systematic debugging based on observable evidence.
+- Git staging area versus commit history.
+- SQL fundamentals (not studied yet).
 
 ---
 
@@ -442,7 +449,7 @@ Possible examples:
 
 ## Current level
 
-`Not assessed`
+`Beginner — needs a more concrete evidence-first debugging process`
 
 Track progress in:
 
@@ -464,7 +471,7 @@ Track progress in:
 
 ## Current level
 
-`Not assessed`
+`Beginner — can solve a small specified task using basic Go syntax`
 
 Track:
 
@@ -569,7 +576,7 @@ Can approach unfamiliar backend problems, research documentation, evaluate trade
 
 Current independence level:
 
-`Not assessed`
+`Level 2 — Guided (initial estimate based on one small exercise)`
 
 Target:
 
@@ -594,7 +601,17 @@ For each topic record:
 
 # Assessments
 
-No assessments completed yet.
+## Initial assessment — 2026-08-17
+
+**Topics assessed:** programming fundamentals, small Go code, terminal, Git, HTTP, SQL, and debugging.
+
+**Strengths:** independently implemented a correct formatted Go function using a slice, loop, condition, counter, and return value; comfortable with basic terminal commands; has a basic HTTP mental model.
+
+**Needs work:** conceptual precision, manual code tracing, systematic debugging, Git staging/commit distinction, and SQL fundamentals.
+
+**Practical result:** `countNonEmptyTitles` produced the expected result; `gofmt`, `go test ./...`, and `go vet ./...` passed (there are no test files yet).
+
+**Recommended start:** complete Phase 0.2 together with Phase 1.1, then cover the remaining Phase 1 topics at beginner depth.
 
 Use assessments at meaningful checkpoints instead of after every lesson.
 
@@ -614,7 +631,7 @@ For each assessment, record:
 
 # Learning observations
 
-None yet.
+The student knows some Go syntax but should build a precise mental model from program structure and toolchain behavior rather than skip directly to backend features.
 
 Keep this section concise.
 
