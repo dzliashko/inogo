@@ -40,11 +40,11 @@ Study pace:
 
 ## Current topic
 
-`Conditions and control flow`
+`Loops`
 
 ## Current exercise
 
-`Exercise 007 — Classify feed status with switch`
+`Exercise 008 — Process article counts with for`
 
 ## Current project milestone
 
@@ -52,9 +52,9 @@ Study pace:
 
 ## Recommended next action
 
-1. Learn expression-based `switch` and its first-matching-case behavior.
-2. Compare `switch` with an equivalent `if` chain.
-3. Complete the conditions and control-flow topic after demonstrating both forms.
+1. Learn Go's `for` forms and choose one appropriate to a concrete task.
+2. Practice counters, totals, `break`, and `continue`.
+3. Explain loop termination and relevant boundary cases.
 
 ---
 
@@ -117,12 +117,13 @@ Do not mark a technology as learned merely because it is listed here.
 - Go environment and introductory toolchain workflow.
 - Go program structure: module, package, imports, functions, and `main`.
 - Variables, constants, basic types, zero values, and assignment forms.
+- Conditions and control flow: comparisons, boolean expressions, branching, early returns, and `switch`.
 
 ---
 
 # Topics in progress
 
-- Conditions and control flow.
+- Loops.
 
 ---
 
@@ -271,6 +272,30 @@ Do not mark a technology as learned merely because it is listed here.
 **Needs repetition:** Yes, through boolean rules in a different domain context.
 
 **Next useful variation:** Write truth tables before implementing compound authorization or filtering rules.
+
+## Exercise 007 — Classify feed status with switch
+
+**Phase:** Phase 1 — Go foundations
+
+**Topic:** `switch` and control flow
+
+**Project relevance:** Feed states and other finite backend states often need clear value-based branching with an explicit fallback.
+
+**Result:** Completed with conceptual clarification
+
+**Tests:** Passed (`gofmt`, `go test ./...`, and `go vet ./...`; no test files exist yet)
+
+**What I understood:** Implemented an expression-based `switch` with `default` and distinguished exiting a `switch` from returning from a function.
+
+**Problems encountered:** Initially attributed case termination to `return`, then reversed the roles of implicit switch termination and the function-level effect of `return`.
+
+**Hints required:** Significant conceptual clarification
+
+**Important mistake:** Confused leaving a selected `case`/`switch` with terminating the surrounding function.
+
+**Needs repetition:** Yes, when `switch` branches perform work without returning.
+
+**Next useful variation:** Use a `switch` whose cases update a value and then continue with code after the switch.
 
 For completed exercises, use this format:
 
@@ -534,6 +559,7 @@ None recorded yet.
 - Can implement mutually exclusive conditional branches and verify boundary values.
 - Understands that an unconditional `return` ends the current function call and makes a following `else` unnecessary.
 - Can combine boolean conditions with `&&`, `||`, and `!` and explain basic short-circuit evaluation.
+- Can implement a value-based `switch` with `default`.
 
 ---
 
@@ -543,6 +569,7 @@ None recorded yet.
 - Systematic debugging based on observable evidence.
 - Git staging area versus commit history.
 - SQL fundamentals (not studied yet).
+- Distinguishing exit from a `switch` from exit from the surrounding function.
 
 ---
 

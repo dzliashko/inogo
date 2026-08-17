@@ -36,15 +36,22 @@ func shouldShowArticle(isRead bool, isStarred bool) bool {
 	return !isRead || isStarred
 }
 
-func main() {
-	fmt.Println(canRefreshFeed(true, 0))
-	fmt.Println(canRefreshFeed(true, 2))
-	fmt.Println(canRefreshFeed(true, 3))
-	fmt.Println(canRefreshFeed(false, 0))
-	fmt.Println(canRefreshFeed(true, -1))
+func feedStatus(status string) string {
+	switch status {
+	case "active":
+		return "refresh enabled"
+	case "paused":
+		return "refresh paused"
+	case "failed":
+		return "refresh failed"
+	default:
+		return "unknown state"
+	}
+}
 
-	fmt.Println(shouldShowArticle(true, true))
-	fmt.Println(shouldShowArticle(true, false))
-	fmt.Println(shouldShowArticle(false, true))
-	fmt.Println(shouldShowArticle(false, false))
+func main() {
+	fmt.Println(feedStatus("active"))
+	fmt.Println(feedStatus("paused"))
+	fmt.Println(feedStatus("failed"))
+	fmt.Println(feedStatus("new"))
 }
