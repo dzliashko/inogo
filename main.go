@@ -15,13 +15,14 @@ func countNonEmptyTitles(titles []string) int {
 func classifyUnreadCount(count int) string {
 	if count < 0 {
 		return "invalid"
-	} else if count == 0 {
-		return "empty"
-	} else if count <= 9 {
-		return "few"
-	} else {
-		return "many"
 	}
+	if count == 0 {
+		return "empty"
+	}
+	if count <= 9 {
+		return "few"
+	}
+	return "many"
 }
 
 func main() {

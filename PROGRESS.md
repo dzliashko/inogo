@@ -44,7 +44,7 @@ Study pace:
 
 ## Current exercise
 
-`Exercise 005 — Refactor branching with early returns`
+`Exercise 006 — Boolean expressions for feed and article state`
 
 ## Current project milestone
 
@@ -52,9 +52,9 @@ Study pace:
 
 ## Recommended next action
 
-1. Refactor a correct `if` / `else if` / `else` chain using early returns.
-2. Explain why removing `else` does not change behavior after an unconditional `return`.
-3. Practice compound boolean expressions and then introduce `switch`.
+1. Practice `&&`, `||`, and `!` using backend-related boolean rules.
+2. Explain short-circuit evaluation using concrete inputs.
+3. Introduce `switch` after compound boolean expressions are demonstrated.
 
 ---
 
@@ -223,6 +223,30 @@ Do not mark a technology as learned merely because it is listed here.
 **Needs repetition:** No immediate repetition; reinforce boundary analysis in later validation exercises.
 
 **Next useful variation:** Express the same behavior using early returns and explain why the branches remain mutually exclusive.
+
+## Exercise 005 — Refactor branching with early returns
+
+**Phase:** Phase 1 — Go foundations
+
+**Topic:** Early returns and control flow
+
+**Project relevance:** Early returns keep validation and backend decision logic flat and make invalid cases explicit.
+
+**Result:** Completed
+
+**Tests:** Passed (`gofmt`, `go test ./...`, and `go vet ./...`; no test files exist yet)
+
+**What I understood:** Refactored a conditional chain without changing behavior and explained that `return` terminates the current function call, constraining values that reach later conditions.
+
+**Problems encountered:** The initial submission omitted the requested control-flow explanation; it was supplied correctly after one prompt.
+
+**Hints required:** Small
+
+**Important mistake:** None affecting code behavior.
+
+**Needs repetition:** No immediate repetition; reinforce early returns in future validation functions.
+
+**Next useful variation:** Combine early returns with compound boolean expressions in feed validation.
 
 For completed exercises, use this format:
 
@@ -484,6 +508,7 @@ None recorded yet.
 - Understands the basic roles of module, package, import, and `func main()`.
 - Understands `var`, assignment, `:=`, `const`, and zero values for `string`, `int`, and `bool`.
 - Can implement mutually exclusive conditional branches and verify boundary values.
+- Understands that an unconditional `return` ends the current function call and makes a following `else` unnecessary.
 
 ---
 
