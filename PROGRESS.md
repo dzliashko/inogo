@@ -52,9 +52,9 @@ Study pace:
 
 ## Recommended next action
 
-1. Compare condition-style and three-clause `for` and explain when each is clearer.
-2. Begin functions with parameters, return values, and scope.
-3. Practice decomposing a small backend-related calculation into single-purpose functions.
+1. Learn multiple return values and why related results can be returned together.
+2. Practice using both returned values at the call site.
+3. Continue reinforcing clear function responsibilities and input validation.
 
 ---
 
@@ -345,6 +345,30 @@ Do not mark a technology as learned merely because it is listed here.
 
 **Next useful variation:** Compare this loop with a three-clause `for`, then begin decomposing logic into small functions.
 
+## Exercise 010 — Decompose feed refresh decision into functions
+
+**Phase:** Phase 1 — Go foundations
+
+**Topic:** Parameters, return values, scope, and function decomposition
+
+**Project relevance:** Backend decision logic is easier to test and reuse when calculations and policy decisions have clear, separate responsibilities.
+
+**Result:** Completed with a small conceptual correction
+
+**Tests:** Passed (`gofmt`, `go test ./...`, and `go vet ./...`; no test files exist yet)
+
+**What I understood:** Implemented two cooperating functions, passed values through parameters and return values, kept state local, and predicted all boundary-case results correctly.
+
+**Problems encountered:** Described `canAttemptRefresh` only as checking whether attempts remain, omitting that it also checks whether the feed is enabled.
+
+**Hints required:** Small terminology correction
+
+**Important mistake:** None affecting behavior.
+
+**Needs repetition:** No immediate repetition; continue naming complete function responsibilities precisely.
+
+**Next useful variation:** Return a computed value together with a validity flag and handle both at the call site.
+
 For completed exercises, use this format:
 
 ## Exercise XXX — Exercise name
@@ -610,6 +634,7 @@ None recorded yet.
 - Can implement a value-based `switch` with `default`.
 - Can use a three-clause `for` with `break` and `continue` after correcting boundary and counter-semantics mistakes.
 - Can implement a bounded condition-style `for` whose progress variable is updated in the loop body.
+- Can split a calculation and a decision into cooperating functions and explain local function scope.
 
 ---
 

@@ -81,12 +81,27 @@ func countRefreshAttempts(maxAttempts int, succeedsOn int) int {
 	return attempt
 }
 
+func remainingRefreshAttempts(maxAttempts int, attemptsUsed int) int {
+	if maxAttempts <= 0 || attemptsUsed < 0 || maxAttempts <= attemptsUsed {
+		return 0
+	}
+	return maxAttempts - attemptsUsed
+}
+
+func canAttemptRefresh(enabled bool, maxAttempts int, attemptsUsed int) bool {
+	remaining := remainingRefreshAttempts(maxAttempts, attemptsUsed)
+	if enabled && remaining > 0 {
+		return true
+	}
+	return false
+}
+
 func main() {
-	fmt.Println(countRefreshAttempts(-1, 1))
-	fmt.Println(countRefreshAttempts(0, 1))
-	fmt.Println(countRefreshAttempts(3, 1))
-	fmt.Println(countRefreshAttempts(3, 2))
-	fmt.Println(countRefreshAttempts(3, 3))
-	fmt.Println(countRefreshAttempts(3, 4))
-	fmt.Println(countRefreshAttempts(3, 0))
+	fmt.Println(canAttemptRefresh(true, 3, 0))
+	fmt.Println(canAttemptRefresh(true, 3, 2))
+	fmt.Println(canAttemptRefresh(true, 3, 3))
+	fmt.Println(canAttemptRefresh(true, 3, 5))
+	fmt.Println(canAttemptRefresh(false, 3, 0))
+	fmt.Println(canAttemptRefresh(true, 0, 0))
+	fmt.Println(canAttemptRefresh(true, 3, -1))
 }
