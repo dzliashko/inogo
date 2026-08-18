@@ -66,11 +66,27 @@ func countProcessableArticles(total int) int {
 	return count
 }
 
+func countRefreshAttempts(maxAttempts int, succeedsOn int) int {
+	attempt := 1
+	if maxAttempts <= 0 {
+		return 0
+	}
+
+	for attempt < maxAttempts {
+		if attempt == succeedsOn {
+			break
+		}
+		attempt++
+	}
+	return attempt
+}
+
 func main() {
-	fmt.Println(countProcessableArticles(-1))
-	fmt.Println(countProcessableArticles(0))
-	fmt.Println(countProcessableArticles(1))
-	fmt.Println(countProcessableArticles(3))
-	fmt.Println(countProcessableArticles(10))
-	fmt.Println(countProcessableArticles(20))
+	fmt.Println(countRefreshAttempts(-1, 1))
+	fmt.Println(countRefreshAttempts(0, 1))
+	fmt.Println(countRefreshAttempts(3, 1))
+	fmt.Println(countRefreshAttempts(3, 2))
+	fmt.Println(countRefreshAttempts(3, 3))
+	fmt.Println(countRefreshAttempts(3, 4))
+	fmt.Println(countRefreshAttempts(3, 0))
 }

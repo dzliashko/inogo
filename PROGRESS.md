@@ -40,11 +40,11 @@ Study pace:
 
 ## Current topic
 
-`Loops`
+`Functions`
 
 ## Current exercise
 
-`Exercise 009 — Retry loop with condition-style for`
+`Not assigned yet`
 
 ## Current project milestone
 
@@ -52,9 +52,9 @@ Study pace:
 
 ## Recommended next action
 
-1. Practice a condition-style `for` whose progress is updated inside the loop body.
-2. Explain loop termination and avoid an infinite loop.
-3. Compare condition-style and three-clause `for`, then complete the loops topic.
+1. Compare condition-style and three-clause `for` and explain when each is clearer.
+2. Begin functions with parameters, return values, and scope.
+3. Practice decomposing a small backend-related calculation into single-purpose functions.
 
 ---
 
@@ -123,7 +123,7 @@ Do not mark a technology as learned merely because it is listed here.
 
 # Topics in progress
 
-- Loops.
+- Functions.
 
 ---
 
@@ -320,6 +320,30 @@ Do not mark a technology as learned merely because it is listed here.
 **Needs repetition:** Yes, through another bounded-processing exercise with different boundary rules.
 
 **Next useful variation:** Trace the counter and termination condition before running a condition-style retry loop.
+
+## Exercise 009 — Retry loop with condition-style for
+
+**Phase:** Phase 1 — Go foundations
+
+**Topic:** Condition-style `for` and loop termination
+
+**Project relevance:** Feed refresh jobs may retry failed work a bounded number of times and must always make progress toward termination.
+
+**Result:** Completed
+
+**Tests:** Passed (`gofmt`, `go test ./...`, and `go vet ./...`; no test files exist yet)
+
+**What I understood:** Used a condition-style `for`, updated the attempt counter inside the loop, stopped on simulated success, and produced the expected results for invalid, successful, and exhausted-attempt cases.
+
+**Problems encountered:** The termination explanation mentioned the counter increment but did not initially connect it explicitly to the finite upper bound in the loop condition.
+
+**Hints required:** Small conceptual clarification
+
+**Important mistake:** None affecting behavior.
+
+**Needs repetition:** No immediate repetition; reinforce bounded termination when real retry behavior is introduced.
+
+**Next useful variation:** Compare this loop with a three-clause `for`, then begin decomposing logic into small functions.
 
 For completed exercises, use this format:
 
@@ -585,6 +609,7 @@ None recorded yet.
 - Can combine boolean conditions with `&&`, `||`, and `!` and explain basic short-circuit evaluation.
 - Can implement a value-based `switch` with `default`.
 - Can use a three-clause `for` with `break` and `continue` after correcting boundary and counter-semantics mistakes.
+- Can implement a bounded condition-style `for` whose progress variable is updated in the loop body.
 
 ---
 
