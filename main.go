@@ -96,12 +96,32 @@ func canAttemptRefresh(enabled bool, maxAttempts int, attemptsUsed int) bool {
 	return false
 }
 
+func calculateRemainingAttempts(maxAttempts int, attemptsUsed int) (int, bool) {
+	if maxAttempts <= 0 || attemptsUsed < 0 || attemptsUsed > maxAttempts {
+		return 0, false
+	}
+	if attemptsUsed == maxAttempts {
+		return 0, true
+	}
+	return maxAttempts - attemptsUsed, true
+}
+
+func refreshAvailability(maxAttempts int, attemptsUsed int) string {
+	remaining, isDataCorrect := calculateRemainingAttempts(maxAttempts, attemptsUsed)
+	if remaining == 0 && !isDataCorrect {
+		return "invalid"
+	}
+	if remaining == 0 && isDataCorrect {
+		return "exhausted"
+	}
+	return "available"
+}
+
 func main() {
-	fmt.Println(canAttemptRefresh(true, 3, 0))
-	fmt.Println(canAttemptRefresh(true, 3, 2))
-	fmt.Println(canAttemptRefresh(true, 3, 3))
-	fmt.Println(canAttemptRefresh(true, 3, 5))
-	fmt.Println(canAttemptRefresh(false, 3, 0))
-	fmt.Println(canAttemptRefresh(true, 0, 0))
-	fmt.Println(canAttemptRefresh(true, 3, -1))
+	fmt.Println(refreshAvailability(3, 0))
+	fmt.Println(refreshAvailability(3, 2))
+	fmt.Println(refreshAvailability(3, 3))
+	fmt.Println(refreshAvailability(3, 5))
+	fmt.Println(refreshAvailability(0, 0))
+	fmt.Println(refreshAvailability(3, -1))
 }

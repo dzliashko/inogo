@@ -52,9 +52,9 @@ Study pace:
 
 ## Recommended next action
 
-1. Learn multiple return values and why related results can be returned together.
-2. Practice using both returned values at the call site.
-3. Continue reinforcing clear function responsibilities and input validation.
+1. Compare named and unnamed result parameters conceptually.
+2. Complete the functions topic with a cumulative exercise.
+3. Prepare for the Phase 1 foundations checkpoint.
 
 ---
 
@@ -369,6 +369,30 @@ Do not mark a technology as learned merely because it is listed here.
 
 **Next useful variation:** Return a computed value together with a validity flag and handle both at the call site.
 
+## Exercise 011 — Return remaining attempts with a validity flag
+
+**Phase:** Phase 1 — Go foundations
+
+**Topic:** Multiple return values and result interpretation
+
+**Project relevance:** Backend calculations often need to return a value together with information about whether that value is valid; this prepares for Go's common value-and-error pattern.
+
+**Result:** Completed with conceptual correction
+
+**Tests:** Passed (`gofmt`, `go test ./...`, and `go vet ./...`; no test files exist yet)
+
+**What I understood:** Returned and received an `(int, bool)` pair, used the validity flag to distinguish an exhausted retry budget from invalid input, and mapped both states to different caller-level results.
+
+**Problems encountered:** Initially answered questions about the helper's `(int, bool)` results using strings returned by the calling function, then correctly traced the exact pairs and their interpretation.
+
+**Hints required:** Small specific hint
+
+**Important mistake:** Confused a helper function's return values with the higher-level result produced by its caller.
+
+**Needs repetition:** Yes, reinforce tracing values across function-call boundaries in the cumulative functions exercise.
+
+**Next useful variation:** Trace multiple return values through another caller using a different domain rule.
+
 For completed exercises, use this format:
 
 ## Exercise XXX — Exercise name
@@ -635,6 +659,7 @@ None recorded yet.
 - Can use a three-clause `for` with `break` and `continue` after correcting boundary and counter-semantics mistakes.
 - Can implement a bounded condition-style `for` whose progress variable is updated in the loop body.
 - Can split a calculation and a decision into cooperating functions and explain local function scope.
+- Can use multiple return values to distinguish a valid zero value from invalid input after a small correction.
 
 ---
 
