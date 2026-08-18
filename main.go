@@ -117,11 +117,26 @@ func refreshAvailability(maxAttempts int, attemptsUsed int) string {
 	return "available"
 }
 
+func normalizeRefreshInterval(requested int) (int, bool) {
+
+	if requested <= 0 {
+		return 0, false
+	}
+
+	if requested < 5 {
+		return 5, true
+	} else if requested > 60 {
+		return 60, true
+	} else {
+		return requested, true
+	}
+
+}
+
 func main() {
-	fmt.Println(refreshAvailability(3, 0))
-	fmt.Println(refreshAvailability(3, 2))
-	fmt.Println(refreshAvailability(3, 3))
-	fmt.Println(refreshAvailability(3, 5))
-	fmt.Println(refreshAvailability(0, 0))
-	fmt.Println(refreshAvailability(3, -1))
+	fmt.Println(normalizeRefreshInterval(-1))
+	fmt.Println(normalizeRefreshInterval(1))
+	fmt.Println(normalizeRefreshInterval(5))
+	fmt.Println(normalizeRefreshInterval(30))
+	fmt.Println(normalizeRefreshInterval(90))
 }

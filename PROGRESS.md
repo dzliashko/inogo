@@ -52,9 +52,9 @@ Study pace:
 
 ## Recommended next action
 
-1. Compare named and unnamed result parameters conceptually.
-2. Complete the functions topic with a cumulative exercise.
-3. Prepare for the Phase 1 foundations checkpoint.
+1. Complete a cumulative functions exercise covering decomposition, scope, validation, and multiple returns.
+2. Review the implementation and explanations against the Phase 1 checkpoint criteria.
+3. Complete the functions topic if the cumulative exercise shows sufficient understanding.
 
 ---
 
@@ -393,6 +393,30 @@ Do not mark a technology as learned merely because it is listed here.
 
 **Next useful variation:** Trace multiple return values through another caller using a different domain rule.
 
+## Exercise 012 — Refactor named results into explicit returns
+
+**Phase:** Phase 1 — Go foundations
+
+**Topic:** Named and unnamed result parameters
+
+**Project relevance:** Explicit return values make validation and configuration functions easier to trace as backend logic grows.
+
+**Result:** Completed after one revision
+
+**Tests:** Passed (`gofmt`, `go test ./...`, and `go vet ./...`; no test files exist yet)
+
+**What I understood:** Identified the zero values of named result parameters, explained bare returns, preserved behavior while changing to unnamed results, and ultimately returned explicit value pairs without temporary result variables.
+
+**Problems encountered:** The first refactor retained local `interval` and `valid` variables even though every branch already knew the final pair to return.
+
+**Hints required:** Specific hint
+
+**Important mistake:** Initially changed the signature and return syntax without fully applying the requested simplification.
+
+**Needs repetition:** Yes, reinforce direct returns and removing unnecessary `else` branches after unconditional returns.
+
+**Next useful variation:** Use explicit returns and early exits in a cumulative function-decomposition exercise.
+
 For completed exercises, use this format:
 
 ## Exercise XXX — Exercise name
@@ -660,6 +684,7 @@ None recorded yet.
 - Can implement a bounded condition-style `for` whose progress variable is updated in the loop body.
 - Can split a calculation and a decision into cooperating functions and explain local function scope.
 - Can use multiple return values to distinguish a valid zero value from invalid input after a small correction.
+- Understands named result zero values and bare returns, and can refactor them to explicit unnamed results after feedback.
 
 ---
 
