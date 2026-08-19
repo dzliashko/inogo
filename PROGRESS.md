@@ -40,7 +40,7 @@ Study pace:
 
 ## Current topic
 
-`Functions`
+`Phase 1 checkpoint`
 
 ## Current exercise
 
@@ -52,9 +52,9 @@ Study pace:
 
 ## Recommended next action
 
-1. Complete a cumulative functions exercise covering decomposition, scope, validation, and multiple returns.
-2. Review the implementation and explanations against the Phase 1 checkpoint criteria.
-3. Complete the functions topic if the cumulative exercise shows sufficient understanding.
+1. Complete a short Phase 1 checkpoint without implementation hints.
+2. Demonstrate variables, branching, loops, functions, and basic code tracing in one exercise.
+3. Reinforce valid zero values and `switch` control flow during the checkpoint.
 
 ---
 
@@ -118,12 +118,14 @@ Do not mark a technology as learned merely because it is listed here.
 - Go program structure: module, package, imports, functions, and `main`.
 - Variables, constants, basic types, zero values, and assignment forms.
 - Conditions and control flow: comparisons, boolean expressions, branching, early returns, and `switch`.
+- Loops: three-clause and condition-style `for`, `break`, `continue`, counters, and bounded termination.
+- Functions: parameters, single and multiple return values, scope, decomposition, and named versus unnamed results.
 
 ---
 
 # Topics in progress
 
-- Functions.
+- Phase 1 checkpoint.
 
 ---
 
@@ -417,6 +419,30 @@ Do not mark a technology as learned merely because it is listed here.
 
 **Next useful variation:** Use explicit returns and early exits in a cumulative function-decomposition exercise.
 
+## Exercise 013 — Build a refresh plan from helper results
+
+**Phase:** Phase 1 — Go foundations
+
+**Topic:** Cumulative functions exercise: decomposition, multiple returns, validation, scope, and early returns
+
+**Project relevance:** Higher-level backend operations compose small validation and calculation helpers while preserving the meaning of each returned value.
+
+**Result:** Completed after multiple revisions
+
+**Tests:** Passed (`gofmt`, `go test ./...`, and `go vet ./...`; no test files exist yet)
+
+**What I understood:** Composed two helpers, preserved validation precedence, used explicit early returns, and ultimately distinguished a valid exhausted state from invalid input using validity flags.
+
+**Problems encountered:** Initially merged helper results with the caller's result, then treated a valid zero remaining-attempt count as invalid. Misleading boolean names and a redundant validation check remained through additional revisions.
+
+**Hints required:** Significant
+
+**Important mistake:** Used the computed value `attempts == 0` as an input-validity test even though the accompanying boolean already represented validity.
+
+**Needs repetition:** Yes, reinforce valid zero values, precise boolean naming, and complete application of review feedback during the Phase 1 checkpoint.
+
+**Next useful variation:** Solve a new value-plus-validity problem without hints and explain each function boundary before running it.
+
 For completed exercises, use this format:
 
 ## Exercise XXX — Exercise name
@@ -473,7 +499,7 @@ Goal:
 
 ## M1 — Go fundamentals
 
-**Status:** `Not started`
+**Status:** `In progress`
 
 Goal:
 
@@ -685,6 +711,7 @@ None recorded yet.
 - Can split a calculation and a decision into cooperating functions and explain local function scope.
 - Can use multiple return values to distinguish a valid zero value from invalid input after a small correction.
 - Understands named result zero values and bare returns, and can refactor them to explicit unnamed results after feedback.
+- Can compose multiple helpers into a higher-level function while preserving their contracts after iterative review.
 
 ---
 
@@ -695,6 +722,7 @@ None recorded yet.
 - Git staging area versus commit history.
 - SQL fundamentals (not studied yet).
 - Distinguishing exit from a `switch` from exit from the surrounding function.
+- Distinguishing valid zero values from invalid input across function-call boundaries without prompting.
 
 ---
 

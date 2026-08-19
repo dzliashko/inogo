@@ -133,10 +133,37 @@ func normalizeRefreshInterval(requested int) (int, bool) {
 
 }
 
+func buildRefreshPlan(
+	enabled bool,
+	requestedInterval int,
+	maxAttempts int,
+	attemptsUsed int,
+) (int, string) {
+	interval, intervalValid := normalizeRefreshInterval(requestedInterval)
+	attempts, attemptsValid := calculateRemainingAttempts(maxAttempts, attemptsUsed)
+
+	if !intervalValid || !attemptsValid {
+		return 0, "invalid"
+	}
+
+	if !enabled {
+		return interval, "disabled"
+	}
+
+	if attempts == 0 {
+		return interval, "exhausted"
+	}
+
+	return interval, "ready"
+}
+
 func main() {
-	fmt.Println(normalizeRefreshInterval(-1))
-	fmt.Println(normalizeRefreshInterval(1))
-	fmt.Println(normalizeRefreshInterval(5))
-	fmt.Println(normalizeRefreshInterval(30))
-	fmt.Println(normalizeRefreshInterval(90))
+	fmt.Println(buildRefreshPlan(true, 15, 3, 0))
+	fmt.Println(buildRefreshPlan(true, 1, 3, 2))
+	fmt.Println(buildRefreshPlan(true, 90, 3, 3))
+	fmt.Println(buildRefreshPlan(false, 30, 3, 0))
+	fmt.Println(buildRefreshPlan(true, 0, 3, 0))
+	fmt.Println(buildRefreshPlan(true, 30, 0, 0))
+	fmt.Println(buildRefreshPlan(true, 30, 3, 5))
+	fmt.Println(buildRefreshPlan(false, 0, 3, 0))
 }
