@@ -52,9 +52,9 @@ Study pace:
 
 ## Recommended next action
 
-1. Learn slice length versus capacity.
-2. Build an initial mental model of a slice and its backing array.
-3. Compare nil and empty slices through observable behavior.
+1. Compare nil and empty slices through `len`, `cap`, `nil` comparison, `range`, and `append`.
+2. Explain which behaviors are shared and which observable property differs.
+3. Reinforce half-open slice boundaries in later exercises.
 
 ---
 
@@ -492,6 +492,30 @@ Do not mark a technology as learned merely because it is listed here.
 
 **Next useful variation:** Observe `len` and `cap` before and after `append`, then compare nil and empty slices.
 
+## Exercise 016 — Observe slice length, capacity, and shared storage
+
+**Phase:** Phase 2 — Core Go data handling
+
+**Topic:** Slice length, capacity, half-open bounds, backing arrays, and `append` reallocation
+
+**Project relevance:** Backend collection code must understand when slices share storage so that mutations and appends do not unexpectedly affect other views of feed or article data.
+
+**Result:** Completed with significant conceptual clarification
+
+**Tests:** Passed (`gofmt`, `go test ./...`, and `go vet ./...`; no test files exist yet)
+
+**What I understood:** Created a slice with reserved capacity, observed length and capacity changes, demonstrated shared storage through a subslice, and showed how exceeding capacity separates the updated slice from the original backing array.
+
+**Problems encountered:** Repeatedly calculated `len(base[:2])` as `3` before correctly distinguishing the two accessible elements from capacity `3`. Initial formatted output also omitted line breaks.
+
+**Hints required:** Significant
+
+**Important mistake:** Confused the length of a half-open slice range with the remaining capacity of its backing array.
+
+**Needs repetition:** Yes, reinforce `[low:high]` as a half-open range and calculate `len` and `cap` independently.
+
+**Next useful variation:** Compare nil and empty slices, then revisit subslice bounds in a filtering exercise.
+
 For completed exercises, use this format:
 
 ## Exercise XXX — Exercise name
@@ -763,6 +787,7 @@ None recorded yet.
 - Can compose multiple helpers into a higher-level function while preserving their contracts after iterative review.
 - Can independently combine a three-clause loop, helper function, validation, and an `(int, bool)` result while preserving a valid zero value.
 - Can create, append to, index, and range over a slice while safely handling an empty slice.
+- Can demonstrate shared backing-array behavior and reallocation after exceeding capacity following guided correction.
 
 ---
 
@@ -772,6 +797,7 @@ None recorded yet.
 - Systematic debugging based on observable evidence.
 - Git staging area versus commit history.
 - SQL fundamentals (not studied yet).
+- Calculating subslice length and capacity from half-open bounds without prompting.
 
 ---
 

@@ -185,22 +185,24 @@ func lastFeedTitle(titles []string) (string, bool) {
 }
 
 func main() {
-	feedTitles := []string{
-		"Go Blog",
-		"Postgres Weekly",
-		"Backend Weekly",
-	}
-	fmt.Printf("начальная длина: %d\n", len(feedTitles))
-	fmt.Printf("первый элемент: %s\n", feedTitles[0])
-	last, ok := lastFeedTitle(feedTitles)
-	fmt.Printf("последний: %s, %t\n", last, ok)
-	feedTitles = append(feedTitles, "RSS Today")
-	fmt.Printf("длина после append: %d\n", len(feedTitles))
-	last, ok = lastFeedTitle(feedTitles)
-	fmt.Printf("последний: %s, %t\n", last, ok)
-	for i, v := range feedTitles {
-		fmt.Printf("%d - %s\n", i, v)
-	}
-	last, ok = lastFeedTitle([]string{})
-	fmt.Printf("пустой slice: %s, %t\n", last, ok)
+	titles := make([]string, 0, 3)
+	fmt.Printf("начало: len %d, cap %d\n", len(titles), cap(titles))
+	titles = append(titles, "string1")
+	titles = append(titles, "string2")
+	titles = append(titles, "string3")
+	fmt.Printf("после трёх append: len %d, cap %d\n", len(titles), cap(titles))
+	titles = append(titles, "string4")
+	fmt.Printf("после четвёртого append: len %d, cap %d\n", len(titles), cap(titles))
+
+	base := []string{"Go", "Postgres", "RSS"}
+	view := base[:2]
+	fmt.Println(len(view), cap(view))
+	view[1] = "SQL"
+	fmt.Println(base)
+	view = append(view, "Atom")
+	fmt.Println(base)
+	view = append(view, "JSON")
+	view[0] = "Changed"
+	fmt.Println(base)
+	fmt.Println(view)
 }
