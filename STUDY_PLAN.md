@@ -305,7 +305,7 @@ Before continuing, I should be able to:
 
 Assessment:
 
-`Not completed`
+`Completed`
 
 ---
 

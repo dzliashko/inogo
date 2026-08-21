@@ -157,13 +157,30 @@ func buildRefreshPlan(
 	return interval, "ready"
 }
 
+func isRefreshCandidate(feedNumber int, pauseEvery int) bool {
+	if feedNumber%pauseEvery == 0 {
+		return false
+	}
+	return true
+}
+func countRefreshCandidates(totalFeeds int, pauseEvery int) (int, bool) {
+	if totalFeeds < 0 || pauseEvery <= 0 {
+		return 0, false
+	}
+	total := 0
+	for i := 1; i <= totalFeeds; i++ {
+		if isRefreshCandidate(i, pauseEvery) {
+			total++
+		}
+	}
+	return total, true
+}
+
 func main() {
-	fmt.Println(buildRefreshPlan(true, 15, 3, 0))
-	fmt.Println(buildRefreshPlan(true, 1, 3, 2))
-	fmt.Println(buildRefreshPlan(true, 90, 3, 3))
-	fmt.Println(buildRefreshPlan(false, 30, 3, 0))
-	fmt.Println(buildRefreshPlan(true, 0, 3, 0))
-	fmt.Println(buildRefreshPlan(true, 30, 0, 0))
-	fmt.Println(buildRefreshPlan(true, 30, 3, 5))
-	fmt.Println(buildRefreshPlan(false, 0, 3, 0))
+	fmt.Println(countRefreshCandidates(0, 3))
+	fmt.Println(countRefreshCandidates(1, 3))
+	fmt.Println(countRefreshCandidates(3, 3))
+	fmt.Println(countRefreshCandidates(7, 3))
+	fmt.Println(countRefreshCandidates(-1, 3))
+	fmt.Println(countRefreshCandidates(5, 0))
 }

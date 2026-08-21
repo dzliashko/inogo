@@ -36,11 +36,11 @@ Study pace:
 
 ## Current phase
 
-`Phase 1 — Go foundations`
+`Phase 2 — Core Go data handling`
 
 ## Current topic
 
-`Phase 1 checkpoint`
+`Arrays and slices`
 
 ## Current exercise
 
@@ -52,9 +52,9 @@ Study pace:
 
 ## Recommended next action
 
-1. Complete a short Phase 1 checkpoint without implementation hints.
-2. Demonstrate variables, branching, loops, functions, and basic code tracing in one exercise.
-3. Reinforce valid zero values and `switch` control flow during the checkpoint.
+1. Build a mental model of arrays versus slices.
+2. Learn slice length, indexing, `append`, and `range` before capacity and backing arrays.
+3. Practice storing and processing a small list of feed titles.
 
 ---
 
@@ -120,12 +120,13 @@ Do not mark a technology as learned merely because it is listed here.
 - Conditions and control flow: comparisons, boolean expressions, branching, early returns, and `switch`.
 - Loops: three-clause and condition-style `for`, `break`, `continue`, counters, and bounded termination.
 - Functions: parameters, single and multiple return values, scope, decomposition, and named versus unnamed results.
+- Phase 1 checkpoint: independently combined variables, branching, a bounded loop, helper functions, multiple returns, and basic compiler-error reasoning.
 
 ---
 
 # Topics in progress
 
-- Phase 1 checkpoint.
+- Arrays and slices.
 
 ---
 
@@ -443,6 +444,30 @@ Do not mark a technology as learned merely because it is listed here.
 
 **Next useful variation:** Solve a new value-plus-validity problem without hints and explain each function boundary before running it.
 
+## Exercise 014 — Phase 1 foundations checkpoint
+
+**Phase:** Phase 1 — Go foundations
+
+**Topic:** Cumulative assessment of control flow, loops, functions, value validity, code tracing, and compiler diagnostics
+
+**Project relevance:** Establishes that the language foundations needed for in-memory feed and article collections are sufficiently stable before moving to slices.
+
+**Result:** Completed independently
+
+**Tests:** Passed (`gofmt`, `go test ./...`, and `go vet ./...`; no test files exist yet)
+
+**What I understood:** Correctly traced execution after a `switch`, explained an undefined-name compiler error, predicted all boundary cases, and independently implemented a helper-driven counting loop returning a valid zero distinctly from invalid input.
+
+**Problems encountered:** No correctness problems. One answer about the post-`switch` instruction was initially broad but became precise after clarification.
+
+**Hints required:** None for implementation; question clarification only
+
+**Important mistake:** None.
+
+**Needs repetition:** No immediate repetition; continue applying precise names and value-validity reasoning in later collection exercises.
+
+**Next useful variation:** Process a slice of feed data using `range`, validation, and a returned count.
+
 For completed exercises, use this format:
 
 ## Exercise XXX — Exercise name
@@ -712,6 +737,7 @@ None recorded yet.
 - Can use multiple return values to distinguish a valid zero value from invalid input after a small correction.
 - Understands named result zero values and bare returns, and can refactor them to explicit unnamed results after feedback.
 - Can compose multiple helpers into a higher-level function while preserving their contracts after iterative review.
+- Can independently combine a three-clause loop, helper function, validation, and an `(int, bool)` result while preserving a valid zero value.
 
 ---
 
@@ -721,8 +747,6 @@ None recorded yet.
 - Systematic debugging based on observable evidence.
 - Git staging area versus commit history.
 - SQL fundamentals (not studied yet).
-- Distinguishing exit from a `switch` from exit from the surrounding function.
-- Distinguishing valid zero values from invalid input across function-call boundaries without prompting.
 
 ---
 
