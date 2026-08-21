@@ -52,9 +52,9 @@ Study pace:
 
 ## Recommended next action
 
-1. Build a mental model of arrays versus slices.
-2. Learn slice length, indexing, `append`, and `range` before capacity and backing arrays.
-3. Practice storing and processing a small list of feed titles.
+1. Learn slice length versus capacity.
+2. Build an initial mental model of a slice and its backing array.
+3. Compare nil and empty slices through observable behavior.
 
 ---
 
@@ -468,6 +468,30 @@ Do not mark a technology as learned merely because it is listed here.
 
 **Next useful variation:** Process a slice of feed data using `range`, validation, and a returned count.
 
+## Exercise 015 — Build and inspect a slice of feed titles
+
+**Phase:** Phase 2 — Core Go data handling
+
+**Topic:** Arrays versus slices, length, indexing, `append`, and `range`
+
+**Project relevance:** Feed subscriptions and articles will be processed as variable-length collections, with safe indexing and iteration required throughout the backend.
+
+**Result:** Completed with terminology clarification
+
+**Tests:** Passed (`gofmt`, `go test ./...`, and `go vet ./...`; no test files exist yet)
+
+**What I understood:** Created and appended to a string slice, used `len`, accessed first and last elements safely, iterated with `range`, and handled an empty slice with a validity flag.
+
+**Problems encountered:** Initially described arrays and slices together and did not explain that indexing an empty slice would panic or that `append` specifically returns an updated slice.
+
+**Hints required:** Small conceptual clarification
+
+**Important mistake:** Imprecise distinction between a fixed-length array type and a slice type.
+
+**Needs repetition:** Yes, reinforce the slice model while introducing capacity and backing arrays.
+
+**Next useful variation:** Observe `len` and `cap` before and after `append`, then compare nil and empty slices.
+
 For completed exercises, use this format:
 
 ## Exercise XXX — Exercise name
@@ -738,6 +762,7 @@ None recorded yet.
 - Understands named result zero values and bare returns, and can refactor them to explicit unnamed results after feedback.
 - Can compose multiple helpers into a higher-level function while preserving their contracts after iterative review.
 - Can independently combine a three-clause loop, helper function, validation, and an `(int, bool)` result while preserving a valid zero value.
+- Can create, append to, index, and range over a slice while safely handling an empty slice.
 
 ---
 

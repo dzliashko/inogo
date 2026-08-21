@@ -163,6 +163,7 @@ func isRefreshCandidate(feedNumber int, pauseEvery int) bool {
 	}
 	return true
 }
+
 func countRefreshCandidates(totalFeeds int, pauseEvery int) (int, bool) {
 	if totalFeeds < 0 || pauseEvery <= 0 {
 		return 0, false
@@ -176,11 +177,30 @@ func countRefreshCandidates(totalFeeds int, pauseEvery int) (int, bool) {
 	return total, true
 }
 
+func lastFeedTitle(titles []string) (string, bool) {
+	if len(titles) == 0 {
+		return "", false
+	}
+	return titles[len(titles)-1], true
+}
+
 func main() {
-	fmt.Println(countRefreshCandidates(0, 3))
-	fmt.Println(countRefreshCandidates(1, 3))
-	fmt.Println(countRefreshCandidates(3, 3))
-	fmt.Println(countRefreshCandidates(7, 3))
-	fmt.Println(countRefreshCandidates(-1, 3))
-	fmt.Println(countRefreshCandidates(5, 0))
+	feedTitles := []string{
+		"Go Blog",
+		"Postgres Weekly",
+		"Backend Weekly",
+	}
+	fmt.Printf("начальная длина: %d\n", len(feedTitles))
+	fmt.Printf("первый элемент: %s\n", feedTitles[0])
+	last, ok := lastFeedTitle(feedTitles)
+	fmt.Printf("последний: %s, %t\n", last, ok)
+	feedTitles = append(feedTitles, "RSS Today")
+	fmt.Printf("длина после append: %d\n", len(feedTitles))
+	last, ok = lastFeedTitle(feedTitles)
+	fmt.Printf("последний: %s, %t\n", last, ok)
+	for i, v := range feedTitles {
+		fmt.Printf("%d - %s\n", i, v)
+	}
+	last, ok = lastFeedTitle([]string{})
+	fmt.Printf("пустой slice: %s, %t\n", last, ok)
 }
