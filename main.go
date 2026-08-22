@@ -195,28 +195,32 @@ func sliceState(titles []string) string {
 }
 
 func main() {
-	var nilTitles []string
-	emptyTitles := []string{}
+	sourceA := []string{"Go", "Postgres", "RSS"}
+	alias := sourceA
 
-	fmt.Printf("nilTitles:   len %d, cap %d, nil %t,  state %s\n", len(nilTitles), cap(nilTitles), nilTitles == nil, sliceState(nilTitles))
-	fmt.Printf("emptyTitles:   len %d, cap %d, nil %t,  state %s\n", len(emptyTitles), cap(emptyTitles), emptyTitles == nil, sliceState(emptyTitles))
+	alias[0] = "Changed"
 
-	nilTitlesCounter := 0
-	emptyTitlesCounter := 0
+	fmt.Println("после изменения alias:")
+	fmt.Println(sourceA)
+	fmt.Println(alias)
+	fmt.Println()
 
-	for range nilTitles {
-		nilTitlesCounter++
-	}
+	fmt.Println("независимая копия:")
+	sourceB := []string{"Go", "Postgres", "RSS"}
+	destination := make([]string, len(sourceB))
+	copied := copy(destination, sourceB)
+	destination[0] = "Changed"
+	fmt.Printf("copied %d\nsourceB: %v\ndestination: %v\n", copied, sourceB, destination)
+	fmt.Println()
 
-	for range emptyTitles {
-		emptyTitlesCounter++
-	}
+	fmt.Println("короткая копия:")
+	destination2 := make([]string, 2)
+	copied = copy(destination2, sourceB)
+	fmt.Printf("copied %d\ndestination: %v\n", copied, destination2)
+	fmt.Println()
 
-	fmt.Printf("итерации: %d, %d\n", nilTitlesCounter, emptyTitlesCounter)
-	nilTitles = append(nilTitles, "Go")
-	emptyTitles = append(emptyTitles, "RSS")
+	capacityOnly := make([]string, 0, 3)
+	copied = copy(capacityOnly, sourceB)
+	fmt.Printf("copied %d\nlen %d\ncap %d\ndestination: %v", copied, len(capacityOnly), cap(capacityOnly), capacityOnly)
 
-	fmt.Println("после append:")
-	fmt.Printf("nilTitles:   %v, nil %t,  state %s\n", nilTitles, nilTitles == nil, sliceState(nilTitles))
-	fmt.Printf("emptyTitles:   %v, nil %t,  state %s\n", emptyTitles, emptyTitles == nil, sliceState(emptyTitles))
 }

@@ -52,9 +52,9 @@ Study pace:
 
 ## Recommended next action
 
-1. Compare slice assignment with an independent copy.
-2. Learn the built-in `copy` operation and destination-length behavior.
-3. Verify mutations through observable source and destination values.
+1. Implement a slice filtering function that returns a new result slice.
+2. Preserve the input slice while appending selected values to the result.
+3. Reinforce `range`, empty input behavior, and output verification.
 
 ---
 
@@ -540,6 +540,30 @@ Do not mark a technology as learned merely because it is listed here.
 
 **Next useful variation:** Compare shared storage after slice assignment with independent storage created using `copy`.
 
+## Exercise 018 — Compare slice assignment with copy
+
+**Phase:** Phase 2 — Core Go data handling
+
+**Topic:** Slice assignment, shared backing storage, `make`, and the built-in `copy` function
+
+**Project relevance:** Backend functions may need to return or retain independent collections so callers cannot accidentally mutate shared feed or article data.
+
+**Result:** Completed after one correction
+
+**Tests:** Passed (`gofmt`, `go test ./...`, and `go vet ./...`; no test files exist yet)
+
+**What I understood:** Demonstrated shared storage after slice assignment, created independent storage with `make`, copied full and partial data, and observed that destination length rather than capacity limits `copy`.
+
+**Problems encountered:** Printed `len(capacityOnly)` in place of `cap(capacityOnly)`, producing a plausible but incorrect observation that static tools could not detect. Initially attributed allocation of independent storage to `copy` rather than `make`.
+
+**Hints required:** Small specific correction
+
+**Important mistake:** Passed the wrong but type-compatible expression to formatted output, so compilation and static checks still succeeded.
+
+**Needs repetition:** No immediate repetition; reinforce operation responsibilities when building a filtering function that allocates a result slice.
+
+**Next useful variation:** Filter feed titles into a newly allocated result without mutating the input.
+
 For completed exercises, use this format:
 
 ## Exercise XXX — Exercise name
@@ -813,6 +837,7 @@ None recorded yet.
 - Can create, append to, index, and range over a slice while safely handling an empty slice.
 - Can demonstrate shared backing-array behavior and reallocation after exceeding capacity following guided correction.
 - Can distinguish nil and empty slices and use `len`, `cap`, `range`, comparison to `nil`, and `append` safely after correction.
+- Can distinguish shared slice assignment from an independent destination created with `make` and populated using `copy`.
 
 ---
 
