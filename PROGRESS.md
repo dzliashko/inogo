@@ -52,9 +52,9 @@ Study pace:
 
 ## Recommended next action
 
-1. Compare nil and empty slices through `len`, `cap`, `nil` comparison, `range`, and `append`.
-2. Explain which behaviors are shared and which observable property differs.
-3. Reinforce half-open slice boundaries in later exercises.
+1. Compare slice assignment with an independent copy.
+2. Learn the built-in `copy` operation and destination-length behavior.
+3. Verify mutations through observable source and destination values.
 
 ---
 
@@ -516,6 +516,30 @@ Do not mark a technology as learned merely because it is listed here.
 
 **Next useful variation:** Compare nil and empty slices, then revisit subslice bounds in a filtering exercise.
 
+## Exercise 017 — Compare nil and empty slices
+
+**Phase:** Phase 2 — Core Go data handling
+
+**Topic:** Nil slices, empty slices, comparison, iteration, and append behavior
+
+**Project relevance:** Backend functions should accept zero-value slices safely and deliberately distinguish missing from explicitly empty collections only when the API semantics require it.
+
+**Result:** Completed after one revision
+
+**Tests:** Passed (`gofmt`, `go test ./...`, and `go vet ./...`; no test files exist yet)
+
+**What I understood:** Distinguished nil and non-nil empty slices, observed their shared `len`, `cap`, `range`, and `append` behavior, compared each with `nil`, and used a function to classify their state.
+
+**Problems encountered:** Initially said two slices had different types and described a slice as only a pointer. The first iteration counters stored the last index instead of counting iterations; the next revision retained an unnecessary index solely to print it.
+
+**Hints required:** Significant conceptual and specific hints
+
+**Important mistake:** Empty inputs made an incorrect iteration-counting implementation appear correct because both counters happened to remain zero.
+
+**Needs repetition:** Yes, test counting logic with non-empty inputs and continue using `for range` when neither index nor value is needed.
+
+**Next useful variation:** Compare shared storage after slice assignment with independent storage created using `copy`.
+
 For completed exercises, use this format:
 
 ## Exercise XXX — Exercise name
@@ -788,6 +812,7 @@ None recorded yet.
 - Can independently combine a three-clause loop, helper function, validation, and an `(int, bool)` result while preserving a valid zero value.
 - Can create, append to, index, and range over a slice while safely handling an empty slice.
 - Can demonstrate shared backing-array behavior and reallocation after exceeding capacity following guided correction.
+- Can distinguish nil and empty slices and use `len`, `cap`, `range`, comparison to `nil`, and `append` safely after correction.
 
 ---
 
@@ -798,6 +823,7 @@ None recorded yet.
 - Git staging area versus commit history.
 - SQL fundamentals (not studied yet).
 - Calculating subslice length and capacity from half-open bounds without prompting.
+- Distinguishing an iteration count from the last index when using `range`.
 
 ---
 

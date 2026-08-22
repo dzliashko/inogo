@@ -184,25 +184,39 @@ func lastFeedTitle(titles []string) (string, bool) {
 	return titles[len(titles)-1], true
 }
 
-func main() {
-	titles := make([]string, 0, 3)
-	fmt.Printf("начало: len %d, cap %d\n", len(titles), cap(titles))
-	titles = append(titles, "string1")
-	titles = append(titles, "string2")
-	titles = append(titles, "string3")
-	fmt.Printf("после трёх append: len %d, cap %d\n", len(titles), cap(titles))
-	titles = append(titles, "string4")
-	fmt.Printf("после четвёртого append: len %d, cap %d\n", len(titles), cap(titles))
+func sliceState(titles []string) string {
+	if titles == nil {
+		return "nil"
+	}
+	if len(titles) == 0 {
+		return "empty"
+	}
+	return "non-empty"
+}
 
-	base := []string{"Go", "Postgres", "RSS"}
-	view := base[:2]
-	fmt.Println(len(view), cap(view))
-	view[1] = "SQL"
-	fmt.Println(base)
-	view = append(view, "Atom")
-	fmt.Println(base)
-	view = append(view, "JSON")
-	view[0] = "Changed"
-	fmt.Println(base)
-	fmt.Println(view)
+func main() {
+	var nilTitles []string
+	emptyTitles := []string{}
+
+	fmt.Printf("nilTitles:   len %d, cap %d, nil %t,  state %s\n", len(nilTitles), cap(nilTitles), nilTitles == nil, sliceState(nilTitles))
+	fmt.Printf("emptyTitles:   len %d, cap %d, nil %t,  state %s\n", len(emptyTitles), cap(emptyTitles), emptyTitles == nil, sliceState(emptyTitles))
+
+	nilTitlesCounter := 0
+	emptyTitlesCounter := 0
+
+	for range nilTitles {
+		nilTitlesCounter++
+	}
+
+	for range emptyTitles {
+		emptyTitlesCounter++
+	}
+
+	fmt.Printf("итерации: %d, %d\n", nilTitlesCounter, emptyTitlesCounter)
+	nilTitles = append(nilTitles, "Go")
+	emptyTitles = append(emptyTitles, "RSS")
+
+	fmt.Println("после append:")
+	fmt.Printf("nilTitles:   %v, nil %t,  state %s\n", nilTitles, nilTitles == nil, sliceState(nilTitles))
+	fmt.Printf("emptyTitles:   %v, nil %t,  state %s\n", emptyTitles, emptyTitles == nil, sliceState(emptyTitles))
 }
