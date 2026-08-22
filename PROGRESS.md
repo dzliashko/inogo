@@ -52,9 +52,9 @@ Study pace:
 
 ## Recommended next action
 
-1. Implement a slice filtering function that returns a new result slice.
-2. Preserve the input slice while appending selected values to the result.
-3. Reinforce `range`, empty input behavior, and output verification.
+1. Complete a cumulative slices exercise using bounds validation, a valid empty result, and independent storage.
+2. Reinforce half-open slicing and the distinct roles of `make` and `copy`.
+3. Review arrays and slices against the Phase 2 topic criteria.
 
 ---
 
@@ -564,6 +564,30 @@ Do not mark a technology as learned merely because it is listed here.
 
 **Next useful variation:** Filter feed titles into a newly allocated result without mutating the input.
 
+## Exercise 019 — Filter non-empty feed titles into a new slice
+
+**Phase:** Phase 2 — Core Go data handling
+
+**Topic:** Filtering, result allocation, `range`, `append`, and nil/empty result contracts
+
+**Project relevance:** Article and feed endpoints frequently filter collections while preserving source data and returning predictable empty results.
+
+**Result:** Completed after multiple revisions
+
+**Tests:** Passed (`gofmt`, `go test ./...`, and `go vet ./...`; no test files exist yet)
+
+**What I understood:** Filtered non-empty titles into an independently allocated slice, preserved order and input data, reserved capacity without creating zero-value elements, and returned non-nil empty results for nil and empty inputs.
+
+**Problems encountered:** Initially used input capacity instead of length, then created a result with nonzero length and appended after its zero values. Repeatedly inspected or reassigned the nil input instead of storing and checking the function's direct return value; the empty-input call was omitted until specifically shown.
+
+**Hints required:** Significant, including specific test-call structure
+
+**Important mistake:** Confused reserving capacity with creating length, and tested an input/intermediate expression instead of the function result named in the acceptance criteria.
+
+**Needs repetition:** Yes, independently construct a zero-length result with planned capacity and test direct return values in the cumulative slices exercise.
+
+**Next useful variation:** Return an independent copy of the first N titles while treating zero as a valid empty request and invalid bounds separately.
+
 For completed exercises, use this format:
 
 ## Exercise XXX — Exercise name
@@ -838,6 +862,7 @@ None recorded yet.
 - Can demonstrate shared backing-array behavior and reallocation after exceeding capacity following guided correction.
 - Can distinguish nil and empty slices and use `len`, `cap`, `range`, comparison to `nil`, and `append` safely after correction.
 - Can distinguish shared slice assignment from an independent destination created with `make` and populated using `copy`.
+- Can filter a slice into independent storage with a deliberate non-nil empty-result contract after guided corrections.
 
 ---
 

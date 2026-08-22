@@ -194,33 +194,44 @@ func sliceState(titles []string) string {
 	return "non-empty"
 }
 
+func filterNonEmptyTitles(titles []string) []string {
+	result := make([]string, 0, len(titles))
+	for _, v := range titles {
+		if v != "" {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
 func main() {
-	sourceA := []string{"Go", "Postgres", "RSS"}
-	alias := sourceA
-
-	alias[0] = "Changed"
-
-	fmt.Println("после изменения alias:")
-	fmt.Println(sourceA)
-	fmt.Println(alias)
+	titles := []string{"Go", "", "Postgres", "", "RSS"}
+	fmt.Println("input:")
+	fmt.Println(titles)
 	fmt.Println()
 
-	fmt.Println("независимая копия:")
-	sourceB := []string{"Go", "Postgres", "RSS"}
-	destination := make([]string, len(sourceB))
-	copied := copy(destination, sourceB)
-	destination[0] = "Changed"
-	fmt.Printf("copied %d\nsourceB: %v\ndestination: %v\n", copied, sourceB, destination)
+	result := filterNonEmptyTitles(titles)
+	fmt.Println("result:")
+	fmt.Println(result)
 	fmt.Println()
 
-	fmt.Println("короткая копия:")
-	destination2 := make([]string, 2)
-	copied = copy(destination2, sourceB)
-	fmt.Printf("copied %d\ndestination: %v\n", copied, destination2)
+	fmt.Printf("len(result): %d\n", len(result))
+	fmt.Printf("cap(result): %d\n", cap(result))
 	fmt.Println()
 
-	capacityOnly := make([]string, 0, 3)
-	copied = copy(capacityOnly, sourceB)
-	fmt.Printf("copied %d\nlen %d\ncap %d\ndestination: %v", copied, len(capacityOnly), cap(capacityOnly), capacityOnly)
+	result[0] = "Changed"
+	fmt.Println(titles)
+	fmt.Println(result)
+	fmt.Println()
+
+	var nilTitles []string
+	nilResult := filterNonEmptyTitles(nilTitles)
+
+	fmt.Printf("len(nilResult) == %d\n", len(nilResult))
+	fmt.Printf("nilResult == nil → %t\n", nilResult == nil)
+
+	emptyResult := filterNonEmptyTitles([]string{})
+	fmt.Printf("len(emptyResult) == %d\n", len(emptyResult))
+	fmt.Printf("emptyResult == nil → %t\n", emptyResult == nil)
 
 }
