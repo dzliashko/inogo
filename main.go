@@ -214,23 +214,25 @@ func takeFeedTitles(titles []string, limit int) ([]string, bool) {
 	return destination, true
 }
 
-func main() {
-	titles := []string{"Go", "Postgres", "RSS", "Atom"}
+func findUnreadCount(unreadByFeed map[string]int, feedID string) (int, bool) {
+	count, exists := unreadByFeed[feedID]
+	return count, exists
+}
 
-	feedTitles, valid := takeFeedTitles(titles, 0)
-	fmt.Printf("feedTitles: %v, valid: %t, feedTitles==nil: %t\n", feedTitles, valid, feedTitles == nil)
-	feedTitles, valid = takeFeedTitles(titles, 2)
-	fmt.Printf("feedTitles: %v, valid: %t, feedTitles==nil: %t\n", feedTitles, valid, feedTitles == nil)
-	feedTitles[0] = "Changed"
-	fmt.Println(titles, feedTitles)
-	feedTitles, valid = takeFeedTitles(titles, 4)
-	fmt.Printf("feedTitles: %v, valid: %t, feedTitles==nil: %t\n", feedTitles, valid, feedTitles == nil)
-	feedTitles, valid = takeFeedTitles(titles, 5)
-	fmt.Printf("feedTitles: %v, valid: %t, feedTitles==nil: %t\n", feedTitles, valid, feedTitles == nil)
-	feedTitles, valid = takeFeedTitles(titles, -1)
-	fmt.Printf("feedTitles: %v, valid: %t, feedTitles==nil: %t\n", feedTitles, valid, feedTitles == nil)
-	feedTitles, valid = takeFeedTitles(nil, 0)
-	fmt.Printf("feedTitles: %v, valid: %t, feedTitles==nil: %t\n", feedTitles, valid, feedTitles == nil)
-	feedTitles, valid = takeFeedTitles(nil, 1)
-	fmt.Printf("feedTitles: %v, valid: %t, feedTitles==nil: %t\n", feedTitles, valid, feedTitles == nil)
+func main() {
+	feeds := make(map[string]int)
+	feeds["go"] = 0
+	feeds["postgres"] = 5
+	feeds["rss"] = 2
+	feeds["postgres"] = 7
+
+	fmt.Println(findUnreadCount(feeds, "go"))
+	fmt.Println(findUnreadCount(feeds, "postgres"))
+	fmt.Println(findUnreadCount(feeds, "rss"))
+	fmt.Println(findUnreadCount(feeds, "atom"))
+
+	var nilUnread map[string]int
+	fmt.Println(findUnreadCount(nilUnread, "go"))
+	fmt.Println(len(feeds), len(nilUnread))
+
 }

@@ -52,9 +52,9 @@ Study pace:
 
 ## Recommended next action
 
-1. Build a mental model of maps as key/value storage.
-2. Learn creation, insertion, lookup, and the comma-ok form.
-3. Practice mapping feed identifiers to unread counts.
+1. Delete existing and missing map keys safely.
+2. Iterate over key/value pairs without assuming a stable order.
+3. Compute order-independent totals from unread counts.
 
 ---
 
@@ -613,6 +613,30 @@ Do not mark a technology as learned merely because it is listed here.
 
 **Next useful variation:** Use maps to associate feed identifiers with unread counts and distinguish a missing key from a stored zero value.
 
+## Exercise 021 — Distinguish a stored zero from a missing map key
+
+**Phase:** Phase 2 — Core Go data handling
+
+**Topic:** Map creation, insertion, update, lookup, comma-ok, and nil-map reads
+
+**Project relevance:** Feed state maps must distinguish a subscribed feed with zero unread articles from a feed identifier that does not exist.
+
+**Result:** Completed with a small conceptual clarification
+
+**Tests:** Passed (`gofmt`, `go test ./...`, and `go vet ./...`; no test files exist yet)
+
+**What I understood:** Created and updated a map, retrieved existing and missing values with comma-ok, distinguished a stored zero from an absent key, and safely read from a nil map.
+
+**Problems encountered:** The explanation correctly predicted a nil-map write panic but initially omitted why initializing the map with `make` makes writes valid.
+
+**Hints required:** Small conceptual clarification
+
+**Important mistake:** None affecting behavior.
+
+**Needs repetition:** No immediate repetition; reinforce comma-ok in later map aggregation and deduplication tasks.
+
+**Next useful variation:** Delete keys and aggregate unread counts through map iteration without depending on iteration order.
+
 For completed exercises, use this format:
 
 ## Exercise XXX — Exercise name
@@ -889,6 +913,7 @@ None recorded yet.
 - Can distinguish shared slice assignment from an independent destination created with `make` and populated using `copy`.
 - Can filter a slice into independent storage with a deliberate non-nil empty-result contract after guided corrections.
 - Can validate slice bounds, use half-open prefixes, create valid empty results, and return independent copies with `make` and `copy` after iterative review.
+- Can create, update, and query maps with comma-ok, including distinguishing a stored zero from a missing key and safely reading a nil map.
 
 ---
 
