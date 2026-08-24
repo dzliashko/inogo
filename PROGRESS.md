@@ -40,7 +40,7 @@ Study pace:
 
 ## Current topic
 
-`Arrays and slices`
+`Maps`
 
 ## Current exercise
 
@@ -52,9 +52,9 @@ Study pace:
 
 ## Recommended next action
 
-1. Complete a cumulative slices exercise using bounds validation, a valid empty result, and independent storage.
-2. Reinforce half-open slicing and the distinct roles of `make` and `copy`.
-3. Review arrays and slices against the Phase 2 topic criteria.
+1. Build a mental model of maps as key/value storage.
+2. Learn creation, insertion, lookup, and the comma-ok form.
+3. Practice mapping feed identifiers to unread counts.
 
 ---
 
@@ -121,12 +121,13 @@ Do not mark a technology as learned merely because it is listed here.
 - Loops: three-clause and condition-style `for`, `break`, `continue`, counters, and bounded termination.
 - Functions: parameters, single and multiple return values, scope, decomposition, and named versus unnamed results.
 - Phase 1 checkpoint: independently combined variables, branching, a bounded loop, helper functions, multiple returns, and basic compiler-error reasoning.
+- Arrays and slices: arrays conceptually; slice length, capacity, indexing, append, range, copying, backing arrays, nil/empty behavior, filtering, and independent results.
 
 ---
 
 # Topics in progress
 
-- Arrays and slices.
+- Maps.
 
 ---
 
@@ -588,6 +589,30 @@ Do not mark a technology as learned merely because it is listed here.
 
 **Next useful variation:** Return an independent copy of the first N titles while treating zero as a valid empty request and invalid bounds separately.
 
+## Exercise 020 — Return an independent prefix of feed titles
+
+**Phase:** Phase 2 — Core Go data handling
+
+**Topic:** Cumulative slices assessment: bounds, half-open slicing, valid empty results, `make`, `copy`, and storage independence
+
+**Project relevance:** Backend pagination and limiting operations must validate bounds, distinguish empty from invalid results, and avoid exposing mutable internal storage.
+
+**Result:** Completed after multiple revisions
+
+**Tests:** Passed (`gofmt`, `go test ./...`, and `go vet ./...`; no test files exist yet)
+
+**What I understood:** Correctly calculated half-open prefix length and capacity, validated bounds before slicing, created valid non-nil empty results, copied prefixes into independent storage, and verified that mutation did not affect the source.
+
+**Problems encountered:** The first implementation copied directly from the full source, omitted nil-state and independence checks, used a separate zero-limit path, and renamed the required function. Initial explanations focused on internal pointers instead of the observable `(result, valid)` contract.
+
+**Hints required:** Significant, including explicit missing acceptance criteria
+
+**Important mistake:** Correct return values alone were treated as sufficient even though required slicing, observable-state checks, naming, and independence verification were missing.
+
+**Needs repetition:** Yes, independently check every acceptance criterion before declaring later exercises complete.
+
+**Next useful variation:** Use maps to associate feed identifiers with unread counts and distinguish a missing key from a stored zero value.
+
 For completed exercises, use this format:
 
 ## Exercise XXX — Exercise name
@@ -863,6 +888,7 @@ None recorded yet.
 - Can distinguish nil and empty slices and use `len`, `cap`, `range`, comparison to `nil`, and `append` safely after correction.
 - Can distinguish shared slice assignment from an independent destination created with `make` and populated using `copy`.
 - Can filter a slice into independent storage with a deliberate non-nil empty-result contract after guided corrections.
+- Can validate slice bounds, use half-open prefixes, create valid empty results, and return independent copies with `make` and `copy` after iterative review.
 
 ---
 
@@ -872,8 +898,8 @@ None recorded yet.
 - Systematic debugging based on observable evidence.
 - Git staging area versus commit history.
 - SQL fundamentals (not studied yet).
-- Calculating subslice length and capacity from half-open bounds without prompting.
 - Distinguishing an iteration count from the last index when using `range`.
+- Checking every acceptance criterion before declaring an exercise complete.
 
 ---
 

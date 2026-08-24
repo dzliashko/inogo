@@ -204,34 +204,33 @@ func filterNonEmptyTitles(titles []string) []string {
 	return result
 }
 
+func takeFeedTitles(titles []string, limit int) ([]string, bool) {
+	if limit < 0 || limit > len(titles) {
+		return nil, false
+	}
+
+	destination := make([]string, limit)
+	_ = copy(destination, titles[:limit])
+	return destination, true
+}
+
 func main() {
-	titles := []string{"Go", "", "Postgres", "", "RSS"}
-	fmt.Println("input:")
-	fmt.Println(titles)
-	fmt.Println()
+	titles := []string{"Go", "Postgres", "RSS", "Atom"}
 
-	result := filterNonEmptyTitles(titles)
-	fmt.Println("result:")
-	fmt.Println(result)
-	fmt.Println()
-
-	fmt.Printf("len(result): %d\n", len(result))
-	fmt.Printf("cap(result): %d\n", cap(result))
-	fmt.Println()
-
-	result[0] = "Changed"
-	fmt.Println(titles)
-	fmt.Println(result)
-	fmt.Println()
-
-	var nilTitles []string
-	nilResult := filterNonEmptyTitles(nilTitles)
-
-	fmt.Printf("len(nilResult) == %d\n", len(nilResult))
-	fmt.Printf("nilResult == nil → %t\n", nilResult == nil)
-
-	emptyResult := filterNonEmptyTitles([]string{})
-	fmt.Printf("len(emptyResult) == %d\n", len(emptyResult))
-	fmt.Printf("emptyResult == nil → %t\n", emptyResult == nil)
-
+	feedTitles, valid := takeFeedTitles(titles, 0)
+	fmt.Printf("feedTitles: %v, valid: %t, feedTitles==nil: %t\n", feedTitles, valid, feedTitles == nil)
+	feedTitles, valid = takeFeedTitles(titles, 2)
+	fmt.Printf("feedTitles: %v, valid: %t, feedTitles==nil: %t\n", feedTitles, valid, feedTitles == nil)
+	feedTitles[0] = "Changed"
+	fmt.Println(titles, feedTitles)
+	feedTitles, valid = takeFeedTitles(titles, 4)
+	fmt.Printf("feedTitles: %v, valid: %t, feedTitles==nil: %t\n", feedTitles, valid, feedTitles == nil)
+	feedTitles, valid = takeFeedTitles(titles, 5)
+	fmt.Printf("feedTitles: %v, valid: %t, feedTitles==nil: %t\n", feedTitles, valid, feedTitles == nil)
+	feedTitles, valid = takeFeedTitles(titles, -1)
+	fmt.Printf("feedTitles: %v, valid: %t, feedTitles==nil: %t\n", feedTitles, valid, feedTitles == nil)
+	feedTitles, valid = takeFeedTitles(nil, 0)
+	fmt.Printf("feedTitles: %v, valid: %t, feedTitles==nil: %t\n", feedTitles, valid, feedTitles == nil)
+	feedTitles, valid = takeFeedTitles(nil, 1)
+	fmt.Printf("feedTitles: %v, valid: %t, feedTitles==nil: %t\n", feedTitles, valid, feedTitles == nil)
 }

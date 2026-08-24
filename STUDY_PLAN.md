@@ -334,7 +334,7 @@ Practice:
 
 Status:
 
-`In progress`
+`Completed`
 
 ---
 
