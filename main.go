@@ -219,20 +219,28 @@ func findUnreadCount(unreadByFeed map[string]int, feedID string) (int, bool) {
 	return count, exists
 }
 
+func totalUnread(unreadByFeed map[string]int) int {
+	totalUnreadCount := 0
+	for _, unreadCount := range unreadByFeed {
+		totalUnreadCount += unreadCount
+	}
+	return totalUnreadCount
+}
+
 func main() {
-	feeds := make(map[string]int)
-	feeds["go"] = 0
-	feeds["postgres"] = 5
-	feeds["rss"] = 2
-	feeds["postgres"] = 7
+	feeds := map[string]int{"go": 0, "postgres": 7, "rss": 2, "atom": 4}
 
-	fmt.Println(findUnreadCount(feeds, "go"))
-	fmt.Println(findUnreadCount(feeds, "postgres"))
-	fmt.Println(findUnreadCount(feeds, "rss"))
-	fmt.Println(findUnreadCount(feeds, "atom"))
+	delete(feeds, "rss")
+	delete(feeds, "news")
+	unreadCount, exists := feeds["rss"]
+	fmt.Println(unreadCount, exists)
+	fmt.Println(len(feeds))
+	fmt.Println(totalUnread(feeds))
+	for feed, count := range feeds {
+		fmt.Println(feed, count)
+	}
 
-	var nilUnread map[string]int
-	fmt.Println(findUnreadCount(nilUnread, "go"))
-	fmt.Println(len(feeds), len(nilUnread))
-
+	var nilMap map[string]int
+	delete(nilMap, "rss")
+	fmt.Println(totalUnread(nilMap))
 }

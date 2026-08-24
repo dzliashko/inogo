@@ -52,9 +52,9 @@ Study pace:
 
 ## Recommended next action
 
-1. Delete existing and missing map keys safely.
-2. Iterate over key/value pairs without assuming a stable order.
-3. Compute order-independent totals from unread counts.
+1. Use `map[string]struct{}` as a set of seen feed identifiers.
+2. Deduplicate a slice while preserving its first-seen order.
+3. Reuse comma-ok without confusing the stored value and existence flag.
 
 ---
 
@@ -637,6 +637,30 @@ Do not mark a technology as learned merely because it is listed here.
 
 **Next useful variation:** Delete keys and aggregate unread counts through map iteration without depending on iteration order.
 
+## Exercise 022 — Delete map entries and total unread counts
+
+**Phase:** Phase 2 — Core Go data handling
+
+**Topic:** Map literals, deletion, iteration order, aggregation, and nil-map operations
+
+**Project relevance:** Removing subscriptions and aggregating unread totals must remain correct regardless of map iteration order and missing identifiers.
+
+**Result:** Completed after multiple revisions
+
+**Tests:** Passed (`gofmt`, `go test ./...`, and `go vet ./...`; no test files exist yet)
+
+**What I understood:** Deleted existing and missing keys safely, verified deletion with comma-ok, iterated over a map without relying on order, summed values, and safely deleted from and ranged over a nil map.
+
+**Problems encountered:** Initially used separate assignments instead of the requested populated map literal, omitted the nil-map total, and retained a misleading lookup variable name through several revisions. One correction renamed the boolean existence result as if it were the unread count.
+
+**Hints required:** Significant, including an explicit acceptance checklist and comma-ok value order
+
+**Important mistake:** Lost track of the `(value, exists)` order when naming comma-ok results, even though the program remained type-correct and printed plausible output.
+
+**Needs repetition:** Yes, reinforce `(value, exists)` naming and independently verify every requested output before declaring completion.
+
+**Next useful variation:** Use a map as a set to deduplicate feed identifiers while preserving slice order.
+
 For completed exercises, use this format:
 
 ## Exercise XXX — Exercise name
@@ -914,6 +938,7 @@ None recorded yet.
 - Can filter a slice into independent storage with a deliberate non-nil empty-result contract after guided corrections.
 - Can validate slice bounds, use half-open prefixes, create valid empty results, and return independent copies with `make` and `copy` after iterative review.
 - Can create, update, and query maps with comma-ok, including distinguishing a stored zero from a missing key and safely reading a nil map.
+- Can delete map entries, aggregate values, and iterate without assuming order after iterative review.
 
 ---
 
@@ -925,6 +950,7 @@ None recorded yet.
 - SQL fundamentals (not studied yet).
 - Distinguishing an iteration count from the last index when using `range`.
 - Checking every acceptance criterion before declaring an exercise complete.
+- Matching comma-ok variable names to the `(value, exists)` result order.
 
 ---
 
