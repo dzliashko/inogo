@@ -44,7 +44,7 @@ Study pace:
 
 ## Current exercise
 
-`Not assigned yet`
+`Exercise 023 — Deduplicate feed identifiers with a map set (in progress)`
 
 ## Current project milestone
 
@@ -52,9 +52,9 @@ Study pace:
 
 ## Recommended next action
 
-1. Use `map[string]struct{}` as a set of seen feed identifiers.
-2. Deduplicate a slice while preserving its first-seen order.
-3. Reuse comma-ok without confusing the stored value and existence flag.
+1. Continue debugging the non-compiling first draft of `uniqueFeedIDs` using the compiler messages near `main.go:236`.
+2. Implement the required `map[string]struct{}` set instead of relying on slice membership helpers.
+3. Deduplicate while preserving first-seen order, then verify every acceptance criterion, including nil/empty results and storage independence.
 
 ---
 

@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"slices"
+)
 
 func countNonEmptyTitles(titles []string) int {
 	total := 0
@@ -226,6 +229,16 @@ func totalUnread(unreadByFeed map[string]int) int {
 	}
 	return totalUnreadCount
 }
+
+func uniqueFeedIDs(ids []string) []string {
+	result:=make([]string)
+	for _,v :=range ids{
+		!slices.Contains(result,v) {
+			append(result,v)
+		}
+	}
+}
+
 
 func main() {
 	feeds := map[string]int{"go": 0, "postgres": 7, "rss": 2, "atom": 4}
